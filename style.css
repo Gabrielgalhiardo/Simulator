@@ -138,6 +138,11 @@ header li{
     background-color: #09390b;
 }
 
+#botaoMinerar:active{
+    transform: scale(0.9);
+    background-color: #1f5d21;
+}
+
 #picareta{
     /* background-color: #ec0000; */
     width: 80%;
@@ -190,6 +195,15 @@ button{
   
 }
 
+button:hover{
+   background-color: #252525;
+}
+
+button:active{
+    transform: scale(0.9);
+    background-color: #1c1d1c;
+}
+
 #menusUpgrades{
     background-color: rgb(74, 74, 74);
     border-radius: 0px 20px 20px 0px;
@@ -200,10 +214,11 @@ button{
     align-items: center;
 }
 
-#botaoDano{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
+article{
+    width: 90%;
+    display: none;
 }
 
 @keyframes minerar{
