@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+    <title>Simulator</title>
+</head>
+<body>
+    <header>
+        <h1>Simulador de Mineração</h1>
+        <nav>
+            <h2>Status:</h2>
+            <ul>
+                <li id="statusPedra">Pedras: 0</li>
+                <li id="statusDano">Dano: 1</li>
+            </ul>
+        </nav>
+    </header>
+    <section id="container">
+
+    <section id="mineracao">
+        <div id="vidaPedra">
+            <div id="vidaPerdida">
+                <p id="vidaTotal">100Hp</p>
+            </div>
+        </div>
+        <div id="conjuntoMineracao">
+            <div id="picareta">
+                <img src="picareta1.png" alt="" id="picareta">
+            </div>
+            <div id="pedra">
+                <img src="pedra.png" alt="" id="pedra">
+            </div>
+        </div>
+        <div>
+            <button id="botaoMinerar" onclick="minerar()">Minerar</button>
+        </div>
+    </section>
+    <section id="menusUpgrades">
+        <div id="menu">
+            <ul>
+                <li><button>Melhorar Dano</button></li>
+                <li><button>Evoluir Picareta</button></li>
+                <li><button>Melhorar Pedra</button></li>
+            </ul>
+        </div>
+        <article id="danoUpgrade">
+            <h2>Melhorar Dano</h2>
+            <p>Melhore o dano da picareta para minerar mais rápido.</p>
+            <button id="botaoDano" onclick="melhoriaDano()"><p id="valorDanoUpgrade">Custo: 20 Pedras</p></button>
+
+        </article>
+    </section>
+</section>
+
+    <script src="script.js"></script>
+</body>
+</html>

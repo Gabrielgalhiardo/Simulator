@@ -1,0 +1,263 @@
+body{
+    background-color: #2a2a2a;
+    display: block;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+
+    font-family: 'Comic Neue', cursive;
+    overflow: hidden;
+
+}
+
+header{
+    /* background-color: #ab0000; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 30vh;
+}
+
+header h1{
+    color: white;
+    font-size: 50px;
+    text-shadow: 2px 20px 10px black;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  
+}
+
+header h2{
+    color: white;
+    font-size: 20px;
+    text-shadow: 2px 20px 10px black;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 10vh;
+}
+
+header ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    color: white;
+    margin: 0;
+    padding: 0;
+    /* width: 10%; */
+    /* height: 10vh; */
+}
+
+header li{
+    margin-left: 10px;
+    padding: 0;
+    font-size: 18px;
+    /* background-color: red; */
+}
+
+
+#container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 60vh;
+}
+
+#mineracao{
+    width: 60%;
+    height: 70vh;
+    background-color: rgb(58, 58, 58);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 0px 0px 20px;
+}
+
+#vidaPedra{
+    background-color: rgb(231, 18, 18);
+    border-radius: 20px;
+    width: 80%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+}
+
+#vidaPerdida{
+    background-color: green;
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#conjuntoMineracao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(58, 30, 30);
+    height: 60vh;
+    width: 80%;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+#botaoMinerar{
+    background-color: green;
+    border-radius: 20px;
+    width: 100%;
+    height: 20px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+#botaoMinerar:hover{
+    background-color: #09390b;
+}
+
+#picareta{
+    /* background-color: #ec0000; */
+    width: 80%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 10px; */
+    animation-direction: alternate;
+}
+
+#pedra{
+    /* background-color: #d3d3d3; */
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+/* outra Seção */
+
+ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    /* width: 100%; */
+    /* background-color: red; */
+}
+li{
+   margin: 10px;
+}
+
+button{
+    background-color: #2a2a2a;
+    border: none;
+    color: white;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: 'Comic Neue', cursive;
+
+  
+}
+
+#menusUpgrades{
+    background-color: rgb(74, 74, 74);
+    border-radius: 0px 20px 20px 0px;
+    width: 40%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#botaoDano{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes minerar{
+    0%{
+        translate: 0px;
+        rotate: 0deg;
+    }
+    50%{
+        translate: 50px;
+        rotate: 20deg;
+    }
+    100%{
+        translate: 90px;
+        rotate: 30deg;
+    }
+    
+}
+
+@keyframes pedraHit {
+    to{
+        transform: scale(1);
+        
+    }
+    from{
+        transform: scale(0.9);
+    }
+}
+
+@keyframes pedraMorre {
+    to{
+        transform: scale(1);
+        transition: rotate 0.5s;
+        rotate: 360deg;
+        
+    }
+    from{
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    
+}
+
+@media (max-width: 650px) {
+
+    button{
+        /* background-color: red; */
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    li{
+        margin: 3px;
+    }
+
+
+
+}
