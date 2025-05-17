@@ -1,6 +1,6 @@
 var vida = 100;
 var vidaAtualizada = 100;
-var pedras = 10000;
+var pedras = 0;
 var bonusPedra = 30;
 var dano = 1;
 var valorUpgradeDano = 20;
@@ -149,6 +149,27 @@ function telaMelhorarPedra(){
    telaEvolucao.style.display = "none";
    telaPedra.style.display = "block";
 }
+
+
+var menuAberto = false;
+function telaRenacer(){
+    let telaRenascimento = document.getElementById("telaRenacimento");
+    let tudo = document.getElementById("containerAll");
+    let fundo = document.getElementById("fundoRenacimento");
+        if(menuAberto == false){
+            menuAberto = true;
+            telaRenascimento.style.display = "flex";
+            fundo.style.display = "flex";
+            tudo.style.display = "none";
+        }else{
+            menuAberto = false;
+            telaRenascimento.style.display = "none";
+            fundo.style.display = "none";
+            tudo.style.display = "block";
+        }
+    }
+
+
     
     
 

@@ -8,6 +8,7 @@
     <title>Simulator</title>
 </head>
 <body>
+    <div id="containerAll">
     <header>
         <h1>Simulador de Mineração</h1>
         <nav>
@@ -20,6 +21,7 @@
             </ul>
         </nav>
     </header>
+
     <section id="container">
 
     <section id="mineracao">
@@ -68,8 +70,28 @@
             <button class="botoesUpgrades" onclick="melhoriaPedra()"><p id="valorPedraUpgrade">Custo: 300 Pedras</p></button>
 
         </article>
+
+        <article id="renacimento">
+            <h1 id="textoRenacer">Renacer</h1>
+            <button id="botaoRenacer" onclick="telaRenacer()"><img src="renacimento.png" alt="" id="imagemRenacimento"></button>
+        </article>
     </section>
 </section>
+</div>
+
+<div id="fundoRenacimento">
+
+    <section id="telaRenacimento">
+        <h1 id="textoRenacer">Renacer</h1>
+        <p id="textoRenacer2">Você quer renascer?</p>
+        <button id="botaoSim" onclick="renacer()">Sim</button>
+        <button id="botaoNao" onclick="telaRenacer()">Não</button>
+        <p>Você ira sacrificar tudo oque ganhou por: 1 ponto de renacimento</p>
+        <p>O SACRIFICIO CUSTA 100K DE PEDRAS</p>
+    </section>
+
+</div>
+
 
     <script src="script.js"></script>
 </body>

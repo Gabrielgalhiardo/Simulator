@@ -1,14 +1,18 @@
 body{
     background-color: #2a2a2a;
-    display: block;
+    display: flex;
+    align-items:  center;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-
+    
     font-family: 'Comic Neue', cursive;
     overflow: hidden;
 
 }
+
+
 
 header{
     /* background-color: #ab0000; */
@@ -221,6 +225,182 @@ article{
     display: none;
 }
 
+
+/* renacimento */
+
+#textoRenacer{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 20px 10px black;
+    text-align: center;
+    animation: mudarCor 5s infinite linear;
+}
+
+#imagemRenacimento{
+    width: 80px;
+    height: 80px;
+}	
+
+#botaoRenacer{
+    background-color: #0e0e07;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+}
+
+#renacimento{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    width: 50%;
+    height: max-content;
+}
+
+#telaRenacimento{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: 70vh;
+    background-color: #7e0101c9;
+    border-radius: 30px;
+    animation: abrirTelaRenacimento 3s 1 linear;
+}
+
+#textoRenacer2{
+    color: #ff0000;
+    filter: blur(1px);
+    font-size: 35px;
+    font-weight: bold;
+    text-shadow: 2px 20px 10px black;
+    text-align: center;
+}
+
+#botaoSim{
+    background-color: #140000;
+    display: flex;
+    font-size: 20px;
+    color: red;
+    align-self: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    animation: mexerBotao 7s infinite linear;
+}
+
+#botaoNao{
+    background-color: #ff0000;
+    font-size: 20px;
+    color: #140000;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    animation: mexerBotao 6s infinite alternate-reverse linear  0.5s;
+}
+
+#fundoRenacimento{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#fundoRenacimento::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('imagens/fundoErro.jpeg');
+    background-position: center;
+    background-position: center;
+    filter: brightness(0.4);
+    z-index: -1;
+}
+
+#telaRenacimento p{
+    color: #ff0000;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px #ff0000,
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 40px #ff4d4d,
+    0 0 60px #ff4d4d;
+}
+
+@keyframes mexerBotao{
+    0%{
+        rotate: 0deg;
+        border-radius: 30px 30px 20px 10px;
+    }
+    25%{
+        rotate: 90deg;
+        border-radius: 10px 20px 10px 20px;
+
+    }
+    50%{
+        rotate: 180deg;
+        border-radius: 30px 20px 20px 10px;
+
+    }
+    75%{
+        rotate: 270deg;
+        border-radius: 20px 10px 40px 30px;
+
+    }
+    100%{
+        rotate: 360deg;
+        border-radius: 30px 30px 20px 20px;
+
+    }
+}
+
+@keyframes abrirTelaRenacimento{
+    from{
+        display: none;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    to{
+        display: flex;
+        opacity: 1;
+        width: 70%;
+        height: 70vh; 
+    }
+    
+}
+
+@keyframes mudarCor{
+    0%{
+        color: #ff0000;
+    }
+    25%{
+        color: #00ff00;
+    }
+    50%{
+        color: #f6ff00;
+    }
+    75%{
+        color: #ff0090;
+    }
+    100%{
+        color: #aa00ff;
+    }
+    
+}
+
+
+
 @keyframes minerar{
     0%{
         translate: 0px;
@@ -263,6 +443,12 @@ article{
 
 @media (max-width: 650px) {
 
+    body{
+        display: block;
+        /* align-items: none;
+        justify-content: none; */
+    }
+    
     button{
         /* background-color: red; */
         font-size: 10px;
