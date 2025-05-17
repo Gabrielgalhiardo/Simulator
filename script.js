@@ -1,7 +1,7 @@
 var vida = 100;
 var vidaAtualizada = 100;
-var pedras = 0;
-var bonusPedra = 50;
+var pedras = 10000;
+var bonusPedra = 30;
 var dano = 1;
 var valorUpgradeDano = 20;
 var valorEvoluirUpgrade = 10;
@@ -61,7 +61,7 @@ function melhoriaDano(){
             pedras = pedras - valorUpgradeDano;
             dano = dano + 1;
             nivelDano += 1;
-            valorUpgradeDano = Math.floor(20 * (1.5 ** (nivelDano - 1)));
+            valorUpgradeDano = Math.floor(20 * (1.18 ** (nivelDano - 1)));
 
     }
 
@@ -74,23 +74,21 @@ function melhoriaPicareta(){
         nivelDano = 1;
         statusDano.innerText = `Dano: ${dano}`;
 
-        multiplicadorDaPicareta = multiplicadorDaPicareta * 1.4;
-        valorEvoluirUpgrade = Math.floor(valorEvoluirUpgrade * 1.64);
+        multiplicadorDaPicareta =(multiplicadorDaPicareta * 1.6).toFixed(2);
+        valorEvoluirUpgrade = Math.floor(valorEvoluirUpgrade * 1.45);
         valorUpgradeDano = Math.floor(20 * (1.5 ** (nivelDano - 1)));
     }
 
 }
 
 function melhoriaPedra(){
-
-
     if(pedras >= valorPedraUpgrade){
         pedras = pedras - valorPedraUpgrade;
-        vida = Math.floor(vida * 1.323);
+        vida = Math.floor(vida * 1.4);
         vidaAtualizada = vida;
-        valorPedraUpgrade = Math.floor(valorPedraUpgrade * 1.61);
+        valorPedraUpgrade = Math.floor(valorPedraUpgrade * 1.70);
 
-        bonusPedra = Math.floor(bonusPedra * 2.2);
+        bonusPedra = Math.floor(bonusPedra * 2);
     }
 }
 
@@ -105,7 +103,7 @@ function atualizarStatus(){
     
     let statusPicareta = document.getElementById("statusPicareta");
     let textoEvolucaoUpgrade = document.getElementById("valorEvoluirUpgrade");
-    statusPicareta.innerText = `Multiplicador da Picareta: ${multiplicadorDaPicareta}`;
+    statusPicareta.innerText = `Multiplicador da Picareta: ${multiplicadorDaPicareta}x`;
     textoEvolucaoUpgrade.innerText = `Custo: ${valorEvoluirUpgrade} Dano`;
     
 
@@ -125,7 +123,7 @@ function atualizarStatus(){
 
 }
 
-setInterval(atualizarStatus, 1000);
+setInterval(atualizarStatus, 200);
 
 // Alteração de tela
 
