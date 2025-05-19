@@ -18,6 +18,7 @@
                 <li id="statusDano">Dano: 1</li>
                 <li id="statusPicareta">Multiplicador picareta: 1x</li>
                 <li id="statusBoostPedra">Pedra boost final: 50 pedras</li>
+                <li id="statusRenacimento">Renacimentos: 0</li>
             </ul>
         </nav>
     </header>
@@ -82,12 +83,52 @@
 <div id="fundoRenacimento">
 
     <section id="telaRenacimento">
-        <h1 id="textoRenacer">Renacer</h1>
-        <p id="textoRenacer2">Você quer renascer?</p>
+        <article id="telaRenacer">
+            <button id="abrirLoja" onclick="lojaRenacimento()"><img src="imagens/iconLoja.png" alt="" id="imagemLoja"></button>
+            <h1 id="tituloRenacer">Renacer</h1>
+            <p id="textoRenacer2">Você quer renascer?</p>
         <button id="botaoSim" onclick="renacer()">Sim</button>
         <button id="botaoNao" onclick="telaRenacer()">Não</button>
         <p>Você ira sacrificar tudo oque ganhou por: 1 ponto de renacimento</p>
-        <p>O SACRIFICIO CUSTA 100K DE PEDRAS</p>
+        <p id="precoRenacimento">O SACRIFICIO CUSTA 100K DE PEDRAS</p>
+    </article>
+
+        <article id="lojaRenacimento">
+            <button onclick="lojaRenacimento()" id="botaoIrRenacer">Renacer</button>
+            <h1 id="textoLoja"><p>Loja de Renacimento</p></h1>
+            <p id="pontosRenacimento">Pontos de Renacimento: 0</p>
+            <div id="containerCanvas">
+                <canvas id="canvas"></canvas>
+                <button id="botaoComprarPicareta2" class="quadrados" onclick="abrirMenuCompraPicareta2()"><img src="picareta1.png" alt=""></button>
+                <button id="botaoComprarPicareta3" class="quadrados" onclick="abrirMenuCompraPicareta3()"><img src="picareta1.png" alt=""></button>
+                <button id="botaoComprarPicareta4" class="quadrados" onclick="abrirMenuCompraPicareta4()"><img src="picareta1.png" alt=""></button>
+                <button id="botaoComprarPicareta5" class="quadrados" onclick="abrirMenuCompraPicareta5()"><img src="picareta1.png" alt=""></button>
+                
+                <button id="botaoComprarPedra2" class="quadrados" onclick="abrirMenuCompraPedra2()"><img src="pedra.png" alt=""></button>
+                <button id="botaoComprarPedra3" class="quadrados" onclick="abrirMenuCompraPedra3()"><img src="pedra.png" alt=""></button>
+                <button id="botaoComprarPedra4" class="quadrados" onclick="abrirMenuCompraPedra4()"><img src="pedra.png" alt=""></button>
+                <button id="botaoComprarPedra5" class="quadrados" onclick="abrirMenuCompraPedra5()"><img src="pedra.png" alt=""></button>
+                
+                <button id="botaoComprarFundo2" class="quadrados" onclick="abrirMenuComprarFundo2()"></button>
+                <button id="botaoComprarFundo3" class="quadrados" onclick="abrirMenuComprarFundo3()"></button>
+                <button id="botaoComprarFundo4" class="quadrados" onclick="abrirMenuComprarFundo4()"></button>
+                <button id="botaoComprarFundo5" class="quadrados" onclick="abrirMenuComprarFundo5()"></button>
+
+                <div id="itemSelecionado">
+                    <h1 id="tituloItemSelecionado"></h1>
+                        <div id="fotoItemSelecionado">
+                            <img src="pedra.png" alt="" id="imagemItemSelecionado">                    
+                        </div>
+                    <p id="precoItemSelecionado"></p>
+                    <p id="descricaoItemSelecionado"></p>
+                    <button id="botaoComprar" onclick="comprarItem()"></button>
+                </div>
+
+            </div>
+            
+
+        </article>
+
     </section>
 
 </div>
