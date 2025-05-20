@@ -1,6 +1,6 @@
 var vida = 100;
 var vidaAtualizada = 100;
-var pedras = 1000000;
+var pedras = 0;
 var bonusPedra = 30;
 var dano = 1;
 var valorUpgradeDano = 20;
