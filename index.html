@@ -9,6 +9,22 @@
 </head>
 <body>
     <div id="containerAll">
+        <div id="configuracao">
+            <button id="botaoConfiguracao" onclick="abrirTelaConfiguracao()"><img src="imagens/Configuracao.png" alt="" id="imagemConfiguracao"></button>
+        </div>
+
+        <div id="telaConfiguracao">
+            <div id="quadradoConfiguracao">
+                <button id="botaoFecharConfiguracao" onclick="abrirTelaConfiguracao()"><img src="imagens/voltar.gif" alt="" id="imagemVoltarConfiguracao"></button>
+                <h1>Configurações</h1>
+                <p>Ativar ou desativar o som do jogo.</p>
+                <div id="configuracaoSom">
+                    <label for="som">Som:</label>
+                    <input type="checkbox" id="som" checked>
+                </div>
+            </div>
+ 
+        </div>
     <header>
         <h1>Simulador de Mineração</h1>
         <nav>
@@ -73,7 +89,7 @@
         </article>
 
         <article id="renacimento">
-            <h1 id="textoRenacer">Renacer</h1>
+            <h1 id="textoRenacer">Renascer</h1>
             <button id="botaoRenacer" onclick="telaRenacer()"><img src="renacimento.png" alt="" id="imagemRenacimento"></button>
         </article>
     </section>
@@ -85,18 +101,18 @@
     <section id="telaRenacimento">
         <article id="telaRenacer">
             <button id="abrirLoja" onclick="lojaRenacimento()"><img src="imagens/iconLoja.png" alt="" id="imagemLoja"></button>
-            <h1 id="tituloRenacer">Renacer</h1>
+            <h1 id="tituloRenacer">Renascer</h1>
             <p id="textoRenacer2">Você quer renascer?</p>
         <button id="botaoSim" onclick="renacer()">Sim</button>
         <button id="botaoNao" onclick="telaRenacer()">Não</button>
-        <p>Você ira sacrificar tudo oque ganhou por: 1 ponto de renacimento</p>
+        <p>Você ira sacrificar tudo oque ganhou por: 1 ponto de renascimento</p>
         <p id="precoRenacimento">O SACRIFICIO CUSTA 100K DE PEDRAS</p>
     </article>
 
         <article id="lojaRenacimento">
-            <button onclick="lojaRenacimento()" id="botaoIrRenacer">Renacer</button>
-            <h1 id="textoLoja"><p>Loja de Renacimento</p></h1>
-            <p id="pontosRenacimento">Pontos de Renacimento: 0</p>
+            <button onclick="lojaRenacimento()" id="botaoIrRenacer">Renascer</button>
+            <h1 id="textoLoja"><p>Loja de Renascimento</p></h1>
+            <p id="pontosRenacimento">Pontos de Renascimento: 0</p>
             <div id="containerCanvas">
                 <canvas id="canvas"></canvas>
                 <button id="botaoComprarPicareta2" class="quadrados" onclick="abrirMenuCompraPicareta2()"><img src="picareta1.png" alt=""></button>

@@ -6,12 +6,83 @@ body{
     flex-direction: column;
     height: 100vh;
     width: 100vw;
-    
     font-family: 'Comic Neue', cursive;
     overflow: hidden;
 
 }
 
+
+
+#configuracao{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+#botaoConfiguracao{
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+
+#imagemConfiguracao{
+    width: 50px;
+    height: 50px;
+}
+
+#telaConfiguracao{
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+#imagemVoltarConfiguracao{
+    width: 50px;
+    height: 50px;
+}
+
+#botaoFecharConfiguracao{
+    position: relative;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+
+
+#quadradoConfiguracao{
+    position: absolute;
+    top: 5%;
+    left: 22%;
+    width: 60%;
+    height: 80%;
+    background-color: #3e3e32;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
 
 
 header{

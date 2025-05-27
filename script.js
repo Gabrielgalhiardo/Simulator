@@ -152,7 +152,7 @@ function comprarItem(){
         picaretaEquipada = 1;
         comprar.innerText = "Equipada";
         boostPicareta = 2;
-        multiplicadorDaPicareta = (multiplicadorDaPicareta * boostPicareta).toFixed(2);
+        multiplicadorDaPicareta = boostPicareta.toFixed(2);
 
 
         return;
@@ -163,7 +163,7 @@ function comprarItem(){
         comprar.innerText = "Equipada";
         alert("Picareta de Pedra comprada com sucesso!");
         boostPicareta = 2;
-        multiplicadorDaPicareta = (multiplicadorDaPicareta * boostPicareta).toFixed(2);
+        multiplicadorDaPicareta = boostPicareta.toFixed(2);
         return;
         
 
@@ -205,16 +205,17 @@ function atualizarStatus(){
 
     let statusRenacimento = document.getElementById("statusRenacimento");
     let textoRenacimento = document.getElementById("precoRenacimento");
-    statusRenacimento.innerText = `Renacimentos: ${numeroDeRenacimentos}`;
+    statusRenacimento.innerText = `Renascimentos: ${numeroDeRenacimentos}`;
     textoRenacimento.innerText = `O SACRIFICIO CUSTA ${custoRenacimento} DE PEDRAS`;
 
     let statusPontosRenacimento = document.getElementById("pontosRenacimento");
-    statusPontosRenacimento.innerText = `Pontos de Renacimento: ${pontosDeRenacimento}`;
+    statusPontosRenacimento.innerText = `Pontos de Renascimento: ${pontosDeRenacimento}`;
 }
 
 setInterval(atualizarStatus, 200);
 
 // Alteração de tela
+
 
  var telaDano = document.getElementById("danoUpgrade");
  var telaEvolucao = document.getElementById("evoluirPicaretaUpgrade");
@@ -278,6 +279,19 @@ function telaRenacer(){
                 lojaRenacimento.style.display = "none";
             }    
 }
+
+    let telaOn = false
+    function abrirTelaConfiguracao(){
+        let telaConfiguracao = document.getElementById("telaConfiguracao");
+
+        if(telaOn == false){
+            telaOn = true;
+            telaConfiguracao.style.display = "flex"; 
+        }else{
+            telaOn = false;
+            telaConfiguracao.style.display = "none";
+        }
+    }
 
 
 
