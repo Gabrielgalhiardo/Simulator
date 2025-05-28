@@ -14,6 +14,9 @@ var numeroDeRenacimentos = 0;
 var pontosDeRenacimento = 0;
 var custoRenacimento = 100000;
 
+var animacaoLigada = true;
+
+
 boostPicareta = 1;
 
 function minerar(){
@@ -210,6 +213,13 @@ function atualizarStatus(){
 
     let statusPontosRenacimento = document.getElementById("pontosRenacimento");
     statusPontosRenacimento.innerText = `Pontos de Renascimento: ${pontosDeRenacimento}`;
+
+    let animacao = document.getElementById("animacaoLigada");
+    if(animacao.checked){
+        animacaoLigada = true;
+    }else{
+        animacaoLigada = false;
+    }
 }
 
 setInterval(atualizarStatus, 200);
@@ -247,11 +257,23 @@ function telaRenacer(){
     let telaRenacer = document.getElementById("telaRenacer");
     let tudo = document.getElementById("containerAll");
     let fundo = document.getElementById("fundoRenacimento");
+    let botaoSim = document.getElementById("botaoSim");
+    let botaoNao = document.getElementById("botaoNao");
         if(menuAberto == false){
             menuAberto = true;
             telaRenascimento.style.display = "flex";
-            telaRenascimento.style.animation = "abrirTelaRenacimento 3s 1 linear";
-            telaRenacer.style.animation = "abrirTelaRenacimento 3s 1 linear";
+            if(animacaoLigada === true){
+                            telaRenascimento.style.animation = "abrirTelaRenacimento 3s 1 linear";
+                            telaRenacer.style.animation = "abrirTelaRenacimento 3s 1 linear";
+                            botaoSim.style.animation = "mexerBotao 7s infinite linear";
+                            botaoNao.style.animation = "mexerBotao 6s infinite alternate-reverse linear  0.5s";
+            }else{
+                telaRenascimento.style.animation = "none";
+                telaRenacer.style.animation = "none";
+                botaoSim.style.animation = "none";
+                botaoNao.style.animation = "none";
+            }
+
             fundo.style.display = "flex";
             tudo.style.display = "none";
             telaRenacer.style.display = "flex";
@@ -293,8 +315,21 @@ function telaRenacer(){
         }
     }
 
+        let sequencia = [];
+        const codigoCorreto = ["1", "8", "G"];
 
+        document.addEventListener("keydown", function(event) {
+        sequencia.push(event.key);
 
+        if (sequencia.length > codigoCorreto.length) {
+            sequencia.shift(); 
+        }
+
+        if (sequencia.join("") === codigoCorreto.join("")) {
+            console.log("Sequência 1-8-G detectada!");
+            pedras += 1000;
+        }
+        });
 
 
 

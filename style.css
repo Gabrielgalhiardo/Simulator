@@ -40,7 +40,9 @@ body{
 }
 
 #telaConfiguracao{
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     width: 100%;
     height: 100%;
@@ -58,7 +60,7 @@ body{
 }
 
 #botaoFecharConfiguracao{
-    position: relative;
+    position: absolute;
     top: 20px;
     left: 20px;
     background: none;
@@ -71,16 +73,14 @@ body{
 
 
 #quadradoConfiguracao{
-    position: absolute;
-    top: 5%;
-    left: 22%;
+    position: relative;
     width: 60%;
     height: 80%;
     background-color: #3e3e32;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     border-radius: 20px;
 }
 
@@ -373,7 +373,6 @@ article{
     justify-content: center;
     width: 50px;
     height: 50px;
-    animation: mexerBotao 7s infinite linear;
 }
 
 #botaoNao{
@@ -386,7 +385,6 @@ article{
     width: 50px;
     height: 50px;
     margin-top: 50px;
-    animation: mexerBotao 6s infinite alternate-reverse linear  0.5s;
 }
 
 #fundoRenacimento{
@@ -413,11 +411,8 @@ article{
     color: #ff0000;
   font-weight: bold;
   text-shadow:
-    0 0 5px #ff0000,
-    0 0 10px #ff0000,
-    0 0 20px #ff0000,
-    0 0 40px #ff4d4d,
-    0 0 60px #ff4d4d;
+    0 0 15px #ff0000,
+    0 10px 10px #000000,
 }
 
 #telaRenacer{
@@ -677,6 +672,8 @@ img{
     padding: 5px;
     color: white;
 }
+
+
 
 
 
