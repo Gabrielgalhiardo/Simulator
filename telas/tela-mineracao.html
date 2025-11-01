@@ -1,0 +1,59 @@
+<section id="mineracao">
+
+    <div id="vidaPedra">
+        <div id="vidaPerdida">
+            <p id="vidaTotal">100Hp</p>
+        </div>
+    </div>
+    <div id="conjuntoMineracao">
+        <div id="picareta">
+            <img src="../imagens/picaretas/picareta1.png" alt="" id="picareta">
+        </div>
+        <div id="pedra">
+            <img src="../imagens/pedras/pedra1.png" alt="" id="pedra">
+        </div>
+    </div>
+    <div>
+        <button id="botaoMinerar" onclick="minerar()">Minerar</button>
+    </div>
+</section>
+
+<section id="menusUpgrades">
+    <div id="menu">
+        <ul>
+            <li><button onclick="telaMelhorarDano()">Melhorar Dano</button></li>
+            <li><button onclick="telaEvoluir()">Evoluir Picareta</button></li>
+            <li><button onclick="telaMelhorarPedra()">Melhorar Pedra</button></li>
+        </ul>
+    </div>
+
+    <article id="danoUpgrade">
+        <h2>Melhorar Dano</h2>
+        <p>Melhore o dano da picareta para minerar mais rápido.</p>
+        <button class="botoesUpgrades" onclick="melhoriaDano()">
+            <p id="valorDanoUpgrade">Custo: 20 Pedras</p>
+        </button>
+    </article>
+
+    <article id="evoluirPicaretaUpgrade">
+        <h2>Evoluir Picareta</h2>
+        <p>Isso irá fazer sua picareta mudar e resetar o dano, mas seu ganho sera maior.</p>
+        <button class="botoesUpgrades" onclick="melhoriaPicareta()">
+            <p id="valorEvoluirUpgrade">Custo: 10 Dano</p>
+        </button>
+    </article>
+
+    <article id="pedraUpgrade">
+        <h2>Melhorar Pedra</h2>
+        <p>Melhore a pedra para deixa-la ela mais dura e aumentar o seu ganho.</p>
+        <button class="botoesUpgrades" onclick="melhoriaPedra()">
+            <p id="valorPedraUpgrade">Custo: 300 Pedras</p>
+        </button>
+    </article>
+
+    <article id="renacimento">
+        <h1 id="textoRenacer">Renascer</h1>
+        <button id="botaoRenacer" onclick="telaRenacer()"><img src="imagens/renacimento.png" alt=""
+                id="imagemRenacimento"></button>
+    </article>
+</section>

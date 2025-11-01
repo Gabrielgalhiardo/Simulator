@@ -1,0 +1,44 @@
+#menusUpgrades{
+    background-color: rgb(74, 74, 74);
+    border-radius: 0px 20px 20px 0px;
+    width: 40%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#renacimento{
+    display: flex; /* Para ser controlado pelo JS */
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    width: 50%;
+    height: max-content;
+}
+
+#textoRenacer{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 20px 10px black;
+    text-align: center;
+    animation: mudarCor 5s infinite linear;
+    /* background-color: #00ff00; */
+}
+
+#imagemRenacimento{
+    width: 80px;
+    height: 80px;
+}   
+
+#botaoRenacer{
+    background-color: #0e0e07;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+}
+

@@ -1,0 +1,74 @@
+#configuracao{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 100; /* Garantir que fique por cima */
+}
+
+#botaoConfiguracao{
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+
+#imagemConfiguracao{
+    width: 50px;
+    height: 50px;
+}
+
+#telaConfiguracao{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Inicia escondido */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 200; /* Fica acima de tudo */
+}
+
+#imagemVoltarConfiguracao{
+    width: 50px;
+    height: 50px;
+}
+
+#botaoFecharConfiguracao{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+
+#quadradoConfiguracao{
+    position: relative;
+    width: 60%;
+    height: 80%;
+    background-color: #3e3e32;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box; /* Boa prática */
+}
+

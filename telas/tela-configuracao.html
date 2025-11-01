@@ -1,0 +1,31 @@
+<div id="configuracao">
+    <button id="botaoConfiguracao" onclick="abrirTelaConfiguracao()"><img src="imagens/Configuracao.png" alt=""
+            id="imagemConfiguracao"></button>
+</div>
+
+<div id="telaConfiguracao">
+    <div id="quadradoConfiguracao">
+        <button id="botaoFecharConfiguracao" onclick="abrirTelaConfiguracao()"><img src="imagens/voltar.gif"
+                alt="" id="imagemVoltarConfiguracao"></button>
+        <h1>Configurações</h1>
+        <p>Ativar ou desativar as animações do jogo.</p>
+        <div id="configuracaoAnimacao">
+            <label for="animacao">Animação:</label>
+            <input type="checkbox" id="animacaoLigada" checked>
+        </div>
+
+        <div id="configuracaoSom" style="margin-top: 20px;">
+            <label for="somLigado">Som:</label>
+            <input type="checkbox" id="somLigado" checked>
+        </div>
+
+        <div id="configuracaoReset" style="margin-top: 40px; text-align: center;">
+            <h2 style="color: red;">Zona de Perigo</h2>
+            <p>Apaga permanentemente todo o seu progresso.</p>
+            <button onclick="resetGame()"
+                style="background-color: #c40909; width: 200px; font-size: 16px;">Resetar Jogo</button>
+        </div>
+
+    </div>
+</div>
+

@@ -1,155 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilos/estilos-globais.css">
+    <link rel="stylesheet" href="estilos/estilos-configuracao.css">
+    <link rel="stylesheet" href="estilos/estilos-mineracao.css">
+    <link rel="stylesheet" href="estilos/estilos-upgrades.css">
+    <link rel="stylesheet" href="estilos/estilos-renascimento.css">
+    <link rel="stylesheet" href="estilos/estilos-media-queries.css">
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
     <title>Simulator</title>
 </head>
+
 <body>
     <div id="containerAll">
-        <div id="configuracao">
-            <button id="botaoConfiguracao" onclick="abrirTelaConfiguracao()"><img src="imagens/Configuracao.png" alt="" id="imagemConfiguracao"></button>
-        </div>
+        <!-- Tela de Configuração será carregada aqui -->
+        <div id="containerConfiguracao"></div>
 
-        <div id="telaConfiguracao">
-            <div id="quadradoConfiguracao">
-                <button id="botaoFecharConfiguracao" onclick="abrirTelaConfiguracao()"><img src="imagens/voltar.gif" alt="" id="imagemVoltarConfiguracao"></button>
-                <h1>Configurações</h1>
-                <p>Ativar ou desativar as animações do jogo.</p>
-                <div id="configuracaoAnimacao">
-                    <label for="animacao">Animação:</label>
-                    <input type="checkbox" id="animacaoLigada" checked>
-                </div>
-            </div>
- 
-        </div>
-    <header>
-        <h1>Simulador de Mineração</h1>
-        <nav>
-            <h2>Status:</h2>
-            <ul>
-                <li id="statusPedra">Pedras: 0</li>
-                <li id="statusDano">Dano: 1</li>
-                <li id="statusPicareta">Multiplicador picareta: 1x</li>
-                <li id="statusBoostPedra">Pedra boost final: 50 pedras</li>
-                <li id="statusRenacimento">Renacimentos: 0</li>
-            </ul>
-        </nav>
-    </header>
+        <header>
+            <h1>Simulador de Mineração</h1>
+            <nav>
+                <h2>Status:</h2>
+                <ul>
+                    <li id="statusPedra">Pedras: 0</li>
+                    <li id="statusDano">Dano: 1</li>
+                    <li id="statusPicareta">Multiplicador picareta: 1x</li>
+                    <li id="statusBoostPedra">Pedra boost final: 50 pedras</li>
+                    <li id="statusRenacimento">Pontos de renascimento: 0</li>
+                </ul>
+            </nav>
+        </header>
 
-    <section id="container">
+        <section id="container">
+            <!-- Tela de Mineração e Upgrades será carregada aqui diretamente -->
+        </section>
+    </div>
 
-    <section id="mineracao">
-        <div id="vidaPedra">
-            <div id="vidaPerdida">
-                <p id="vidaTotal">100Hp</p>
-            </div>
-        </div>
-        <div id="conjuntoMineracao">
-            <div id="picareta">
-                <img src="picareta1.png" alt="" id="picareta">
-            </div>
-            <div id="pedra">
-                <img src="pedra.png" alt="" id="pedra">
-            </div>
-        </div>
-        <div>
-            <button id="botaoMinerar" onclick="minerar()">Minerar</button>
-        </div>
-    </section>
-    <section id="menusUpgrades">
-        <div id="menu">
-            <ul>
-                <li><button onclick="telaMelhorarDano()">Melhorar Dano</button></li>
-                <li><button onclick="telaEvoluir()">Evoluir Picareta</button></li>
-                <li><button onclick="telaMelhorarPedra()">Melhorar Pedra</button></li>
-            </ul>
-        </div>
+    <!-- Tela de Renascimento será carregada aqui -->
+    <div id="containerRenascimento"></div>
 
-        <article id="danoUpgrade">
-            <h2>Melhorar Dano</h2>
-            <p>Melhore o dano da picareta para minerar mais rápido.</p>
-            <button class="botoesUpgrades" onclick="melhoriaDano()"><p id="valorDanoUpgrade">Custo: 20 Pedras</p></button>
+    <script>
+        // Função para carregar telas dinamicamente
+        async function carregarTela(caminho, containerId) {
+            try {
+                const response = await fetch(caminho);
+                const html = await response.text();
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = html;
+                }
+            } catch (error) {
+                console.error(`Erro ao carregar ${caminho}:`, error);
+            }
+        }
 
-        </article>
-
-        <article id="evoluirPicaretaUpgrade">
-            <h2>Evoluir Picareta</h2>
-            <p>Isso irá fazer sua picareta mudar e resetar o dano, mas seu ganho sera maior.</p>
-            <button class="botoesUpgrades" onclick="melhoriaPicareta()"><p id="valorEvoluirUpgrade">Custo: 10 Dano</p></button>
-        </article>
-
-        <article id="pedraUpgrade">
-            <h2>Melhorar Pedra</h2>
-            <p>Melhore a pedra para deixa-la ela mais dura e aumentar o seu ganho.</p>
-            <button class="botoesUpgrades" onclick="melhoriaPedra()"><p id="valorPedraUpgrade">Custo: 300 Pedras</p></button>
-
-        </article>
-
-        <article id="renacimento">
-            <h1 id="textoRenacer">Renascer</h1>
-            <button id="botaoRenacer" onclick="telaRenacer()"><img src="renacimento.png" alt="" id="imagemRenacimento"></button>
-        </article>
-    </section>
-</section>
-</div>
-
-<div id="fundoRenacimento">
-
-    <section id="telaRenacimento">
-        <article id="telaRenacer">
-            <button id="abrirLoja" onclick="lojaRenacimento()"><img src="imagens/iconLoja.png" alt="" id="imagemLoja"></button>
-            <h1 id="tituloRenacer">Renascer</h1>
-            <p id="textoRenacer2">Você quer renascer?</p>
-        <button id="botaoSim" onclick="renacer()">Sim</button>
-        <button id="botaoNao" onclick="telaRenacer()">Não</button>
-        <p>Você ira sacrificar tudo oque ganhou por: 1 ponto de renascimento</p>
-        <p id="precoRenacimento">O SACRIFICIO CUSTA 100K DE PEDRAS</p>
-    </article>
-
-        <article id="lojaRenacimento">
-            <button onclick="lojaRenacimento()" id="botaoIrRenacer">Renascer</button>
-            <h1 id="textoLoja"><p>Loja de Renascimento</p></h1>
-            <p id="pontosRenacimento">Pontos de Renascimento: 0</p>
-            <div id="containerCanvas">
-                <canvas id="canvas"></canvas>
-                <button id="botaoComprarPicareta2" class="quadrados" onclick="abrirMenuCompraPicareta2()"><img src="picareta1.png" alt=""></button>
-                <button id="botaoComprarPicareta3" class="quadrados" onclick="abrirMenuCompraPicareta3()"><img src="picareta1.png" alt=""></button>
-                <button id="botaoComprarPicareta4" class="quadrados" onclick="abrirMenuCompraPicareta4()"><img src="picareta1.png" alt=""></button>
-                <button id="botaoComprarPicareta5" class="quadrados" onclick="abrirMenuCompraPicareta5()"><img src="picareta1.png" alt=""></button>
-                
-                <button id="botaoComprarPedra2" class="quadrados" onclick="abrirMenuCompraPedra2()"><img src="pedra.png" alt=""></button>
-                <button id="botaoComprarPedra3" class="quadrados" onclick="abrirMenuCompraPedra3()"><img src="pedra.png" alt=""></button>
-                <button id="botaoComprarPedra4" class="quadrados" onclick="abrirMenuCompraPedra4()"><img src="pedra.png" alt=""></button>
-                <button id="botaoComprarPedra5" class="quadrados" onclick="abrirMenuCompraPedra5()"><img src="pedra.png" alt=""></button>
-                
-                <button id="botaoComprarFundo2" class="quadrados" onclick="abrirMenuComprarFundo2()"></button>
-                <button id="botaoComprarFundo3" class="quadrados" onclick="abrirMenuComprarFundo3()"></button>
-                <button id="botaoComprarFundo4" class="quadrados" onclick="abrirMenuComprarFundo4()"></button>
-                <button id="botaoComprarFundo5" class="quadrados" onclick="abrirMenuComprarFundo5()"></button>
-
-                <div id="itemSelecionado">
-                    <h1 id="tituloItemSelecionado"></h1>
-                        <div id="fotoItemSelecionado">
-                            <img src="pedra.png" alt="" id="imagemItemSelecionado">                    
-                        </div>
-                    <p id="precoItemSelecionado"></p>
-                    <p id="descricaoItemSelecionado"></p>
-                    <button id="botaoComprar" onclick="comprarItem()"></button>
-                </div>
-
-            </div>
+        // Carregar todas as telas quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Carrega tela de mineração diretamente no container
+            await carregarTela('telas/tela-mineracao.html', 'container');
             
-
-        </article>
-
-    </section>
-
-</div>
-
-
+            // Carrega outras telas
+            await Promise.all([
+                carregarTela('telas/tela-configuracao.html', 'containerConfiguracao'),
+                carregarTela('telas/tela-renascimento.html', 'containerRenascimento')
+            ]);
+            
+            // Após carregar todas as telas, inicializa o jogo
+            if (typeof inicializarJogo === 'function') {
+                inicializarJogo();
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
+
 </html>
