@@ -139,7 +139,7 @@ function resetGame() {
 
 function minerar(){
     let picareta = document.getElementById("picareta");
-    let pedra = document.getElementById("pedra");
+    let pedregulho = document.getElementById("pedra");
     let botao = document.getElementById("botaoMinerar");
 
 
@@ -167,7 +167,7 @@ function minerar(){
         // Ganho matatando a Pedra
         let multiplicadorPedraAtual = (pedraEquipada > 0) ? multiplicadoresPedra[pedraEquipada - 1] : 1;
         let multiplicadorPicaretaAtual = (picaretaEquipada > 0) ? parseFloat(multiplicadorDaPicareta) : 1;
-        pedras += Math.floor(bonusPedra * multiplicadorPicaretaAtual * multiplicadorPedraAtual);
+        pedregulho += Math.floor(bonusPedra * multiplicadorPicaretaAtual * multiplicadorPedraAtual);
 
         // Tocar som de pedra quebrando
         if(somLigado){
@@ -184,7 +184,7 @@ function minerar(){
         // Ganho sem matar a Pedra
         let multiplicadorPedraAtual = (pedraEquipada > 0) ? multiplicadoresPedra[pedraEquipada - 1] : 1;
         let multiplicadorPicaretaAtual = (picaretaEquipada > 0) ? parseFloat(multiplicadorDaPicareta) : 1;
-        pedras += Math.floor(dano * multiplicadorPicaretaAtual * multiplicadorPedraAtual); 
+        pedregulho += Math.floor(dano * multiplicadorPicaretaAtual * multiplicadorPedraAtual); 
         
         // Tocar som de hit na pedra
         if(somLigado){
