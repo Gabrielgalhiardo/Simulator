@@ -1,6 +1,6 @@
 var vida = 100;
 var vidaAtualizada = 100;
-var pedras = 0;
+var pedregulho = 0;
 var bonusPedra = 30;
 var dano = 1;
 var valorUpgradeDano = 20;
@@ -34,7 +34,7 @@ somStoneBroke.volume = 0.5;
 function saveGame() {
     let saveObject = {
         vida: vida,
-        pedras: pedras,
+        pedregulho: pedregulho,
         bonusPedra: bonusPedra,
         dano: dano,
         valorUpgradeDano: valorUpgradeDano,
@@ -70,7 +70,7 @@ function loadGame() {
         // O '??' (operador de coalescência nula) garante que, se uma variável não
         // existir no save (por ser uma nova versão), ela use o valor padrão.
         vida = saveObject.vida ?? 100;
-        pedras = saveObject.pedras ?? 0;
+        pedregulho = saveObject.pedregulho ?? 0;
         bonusPedra = saveObject.bonusPedra ?? 30;
         dano = saveObject.dano ?? 1;
         valorUpgradeDano = saveObject.valorUpgradeDano ?? 20;
@@ -205,8 +205,8 @@ function minerar(){
 
 function melhoriaDano(){
 
-    if(pedras >= valorUpgradeDano){
-            pedras = pedras - valorUpgradeDano;
+    if(pedregulho >= valorUpgradeDano){
+            pedregulho = pedregulho - valorUpgradeDano;
             dano = dano + 1;
             nivelDano += 1;
             valorUpgradeDano = Math.floor(20 * (1.18 ** (nivelDano - 1)));
@@ -232,8 +232,8 @@ function melhoriaPicareta(){
 }
 
 function melhoriaPedra(){
-    if(pedras >= valorPedraUpgrade){
-        pedras = pedras - valorPedraUpgrade;
+    if(pedregulho >= valorPedraUpgrade){
+        pedregulho = pedregulho - valorPedraUpgrade;
         vida = Math.floor(vida * 1.4);
         vidaAtualizada = vida;
         valorPedraUpgrade = Math.floor(valorPedraUpgrade * 1.70);
@@ -243,12 +243,12 @@ function melhoriaPedra(){
 }
 
 function renacer(){
-    if(pedras >= custoRenacimento){
+    if(pedregulho >= custoRenacimento){
         custoRenacimento = Math.floor(custoRenacimento * 2);
 
         vida = 100;
         vidaAtualizada = 100;
-        pedras = 0;
+        pedregulho = 0;
         bonusPedra = 30;
         dano = 1;
         valorUpgradeDano = 20;
@@ -799,7 +799,7 @@ function atualizarStatus(){
     let textoPedraUpgrade = document.getElementById("valorPedraUpgrade");
     let statusBoostPedra = document.getElementById("statusBoostPedra");
 
-    statusPedra.innerText = `Pedras: ${pedras}`;
+    statusPedra.innerText = `Pedras: ${pedregulho}`;
     textoPedraUpgrade.innerText = `Custo: ${valorPedraUpgrade} Pedras`; 
     statusBoostPedra.innerText = `Pedra boost final: ${bonusPedra} pedras`;
     
