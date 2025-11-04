@@ -82,7 +82,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url('imagens/fundoErro.jpeg');
+    background-image: url('../imagens/fundoErro.jpeg');
     background-position: center;
     background-size: cover; /* Garante que cubra tudo */
     filter: brightness(0.4);

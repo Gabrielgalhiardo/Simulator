@@ -139,7 +139,7 @@ function resetGame() {
 
 function minerar(){
     let picareta = document.getElementById("picareta");
-    let pedregulho = document.getElementById("pedra");
+    let pedra = document.getElementById("pedra");
     let botao = document.getElementById("botaoMinerar");
 
 
@@ -987,7 +987,7 @@ function telaRenacer(){
 
         if (sequencia.join("").toUpperCase() === codigoCorreto.join("")) {
             console.log("Sequência 1-8-G detectada!");
-            pedras += 100000;
+            pedregulho += 100000;
             sequencia = [];
         }
         });
