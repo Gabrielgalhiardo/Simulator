@@ -10,34 +10,71 @@
     /* Header responsivo */
     header{
         height: auto;
-        min-height: 15vh;
-        padding: 10px 0;
+        min-height: auto;
+        padding: 10px 15px;
     }
 
     header h1{
         font-size: 28px;
-        margin: 5px 0;
+        margin: 5px 0 8px 0;
+        letter-spacing: 1px;
     }
 
     header h2{
         font-size: 16px;
+        margin: 0 5px 0 0;
     }
 
     nav{
         height: auto;
-        min-height: 8vh;
+        min-height: auto;
         padding: 5px;
+        flex-direction: row;
+        align-items: center;
     }
 
     header ul{
-        flex-direction: column;
-        gap: 5px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
     }
 
     header li{
-        font-size: 14px;
-        margin: 2px;
+        font-size: 13px;
+        margin: 0;
         text-align: center;
+    }
+
+    .statusItem{
+        padding: 6px 12px;
+        gap: 6px;
+    }
+
+    .statusLabel{
+        font-size: 13px;
+    }
+
+    .statusValue{
+        font-size: 13px;
+    }
+
+    /* Configurações responsivas */
+    #quadradoConfiguracao{
+        width: 90%;
+        padding: 20px;
+    }
+
+    #configuracaoStatus h2{
+        font-size: 18px;
+    }
+
+    .opcaoStatus{
+        padding: 10px 12px;
+    }
+
+    .opcaoStatus span{
+        font-size: 14px;
     }
 
     /* Container principal */

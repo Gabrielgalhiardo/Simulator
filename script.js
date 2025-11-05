@@ -17,6 +17,15 @@ var custoRenacimento = 100000;
 var animacaoLigada = true;
 var somLigado = true;
 
+// Configurações de visibilidade do cabeçalho
+var statusVisibilidade = {
+    pedras: true,
+    dano: true,
+    picareta: true,
+    boostPedra: true,
+    renascimento: true
+};
+
 var boostPicareta = 1;
 
 // Elementos de áudio
@@ -75,7 +84,8 @@ function saveGame() {
         pedraEquipada: pedraEquipada,
         fundoEquipado: fundoEquipado,
         pedras: pedras,
-        fundos: fundos
+        fundos: fundos,
+        statusVisibilidade: statusVisibilidade
         // Não precisamos salvar vidaAtualizada, ela será resetada para a 'vida' máxima no load
     };
 
@@ -119,6 +129,11 @@ function loadGame() {
             pedras = [false, false, false, false];
         }
         fundos = saveObject.fundos ?? [false, false, false, false];
+        
+        // Carregar preferências de visibilidade do cabeçalho
+        if(saveObject.statusVisibilidade){
+            statusVisibilidade = saveObject.statusVisibilidade;
+        }
         
         // Aplicar itens equipados ao carregar (0 = padrão, também precisa ser aplicado)
         // Usar setTimeout para garantir que as telas foram carregadas
@@ -847,12 +862,25 @@ function atualizarStatus(){
     let textoDanoUpgrade = document.getElementById("valorDanoUpgrade");
 
     textoDanoUpgrade.innerText = `Custo: ${valorUpgradeDano} Pedras`;
-    statusDano.innerText = `Dano: ${dano}`;
+    
+    // Atualizar status com novos elementos
+    let statusDanoValue = statusDano.querySelector('.statusValue');
+    if(statusDanoValue){
+        statusDanoValue.innerText = dano;
+    } else {
+        statusDano.innerText = `Dano: ${dano}`;
+    }
 
     
     let statusPicareta = document.getElementById("statusPicareta");
     let textoEvolucaoUpgrade = document.getElementById("valorEvoluirUpgrade");
-    statusPicareta.innerText = `Multiplicador da Picareta: ${multiplicadorDaPicareta}x`;
+    
+    let statusPicaretaValue = statusPicareta.querySelector('.statusValue');
+    if(statusPicaretaValue){
+        statusPicaretaValue.innerText = `${multiplicadorDaPicareta}x`;
+    } else {
+        statusPicareta.innerText = `Multiplicador da Picareta: ${multiplicadorDaPicareta}x`;
+    }
     textoEvolucaoUpgrade.innerText = `Custo: ${valorEvoluirUpgrade} Dano`;
     
 
@@ -860,9 +888,21 @@ function atualizarStatus(){
     let textoPedraUpgrade = document.getElementById("valorPedraUpgrade");
     let statusBoostPedra = document.getElementById("statusBoostPedra");
 
-    statusPedra.innerText = `Pedras: ${pedregulho}`;
+    let statusPedraValue = statusPedra.querySelector('.statusValue');
+    if(statusPedraValue){
+        statusPedraValue.innerText = pedregulho;
+    } else {
+        statusPedra.innerText = `Pedras: ${pedregulho}`;
+    }
+    
     textoPedraUpgrade.innerText = `Custo: ${valorPedraUpgrade} Pedras`; 
-    statusBoostPedra.innerText = `Pedra boost final: ${bonusPedra} pedras`;
+    
+    let statusBoostPedraValue = statusBoostPedra.querySelector('.statusValue');
+    if(statusBoostPedraValue){
+        statusBoostPedraValue.innerText = `${bonusPedra} pedras`;
+    } else {
+        statusBoostPedra.innerText = `Pedra boost final: ${bonusPedra} pedras`;
+    }
     
     let statusVida = document.getElementById("vidaPerdida");
     let textoVidaUpgrade = document.getElementById("vidaTotal");
@@ -873,11 +913,20 @@ function atualizarStatus(){
 
     let statusRenacimento = document.getElementById("statusRenacimento");
     let textoRenacimento = document.getElementById("precoRenacimento");
-    statusRenacimento.innerText = `Pontos de renascimento: ${pontosDeRenacimento}`;
+    
+    let statusRenacimentoValue = statusRenacimento.querySelector('.statusValue');
+    if(statusRenacimentoValue){
+        statusRenacimentoValue.innerText = pontosDeRenacimento;
+    } else {
+        statusRenacimento.innerText = `Pontos de renascimento: ${pontosDeRenacimento}`;
+    }
     textoRenacimento.innerText = `O SACRIFICIO CUSTA ${custoRenacimento} DE PEDRAS`;
 
     let statusPontosRenacimento = document.getElementById("pontosRenacimento");
     statusPontosRenacimento.innerText = `Pontos de Renascimento: ${pontosDeRenacimento}`;
+    
+    // Aplicar visibilidade dos status baseado nas configurações
+    aplicarVisibilidadeStatus();
 
     // Atualizar aviso de dinheiro insuficiente na tela de renascimento
     let avisoSemDinheiro = document.getElementById("avisoSemDinheiro");
@@ -966,15 +1015,43 @@ setInterval(saveGame, 5000);
 
  // Inicia mostrando a tela de dano
  // Esta função será chamada após as telas serem carregadas
- function inicializarJogo() {
+ // Função para aplicar visibilidade dos status
+function aplicarVisibilidadeStatus(){
+    let statusItems = document.querySelectorAll('.statusItem');
+    statusItems.forEach(item => {
+        let statusType = item.getAttribute('data-status');
+        if(statusVisibilidade[statusType] !== undefined){
+            if(statusVisibilidade[statusType]){
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    });
+}
+
+// Função para atualizar visibilidade quando checkbox mudar
+function atualizarVisibilidadeStatus(statusType, visivel){
+    statusVisibilidade[statusType] = visivel;
+    aplicarVisibilidadeStatus();
+    saveGame();
+}
+
+function inicializarJogo() {
     // Inicializa as referências aos elementos agora que as telas foram carregadas
     telaDano = document.getElementById("danoUpgrade");
     telaEvolucao = document.getElementById("evoluirPicaretaUpgrade");
     telaPedra = document.getElementById("pedraUpgrade");
     
-    loadGame(); // **CARREGA O JOGO PRIMEIRO**
+    loadGame(); // **CARREGA O JOGO PRIMEIRO** 
+    
+    // Aplicar visibilidade dos status após carregar o jogo
+    setTimeout(() => {
+        aplicarVisibilidadeStatus();
+    }, 200);
+    
     telaMelhorarDano(); 
- }
+}
 
 function telaMelhorarDano(){
    if (!telaDano) {
@@ -1078,7 +1155,37 @@ function telaRenacer(){
 
         if(telaOn == false){
             telaOn = true;
-            telaConfiguracao.style.display = "flex"; 
+            telaConfiguracao.style.display = "flex";
+            
+            // Inicializar checkboxes de visibilidade
+            setTimeout(() => {
+                let mostrarPedras = document.getElementById("mostrarPedras");
+                let mostrarDano = document.getElementById("mostrarDano");
+                let mostrarPicareta = document.getElementById("mostrarPicareta");
+                let mostrarBoostPedra = document.getElementById("mostrarBoostPedra");
+                let mostrarRenascimento = document.getElementById("mostrarRenascimento");
+                
+                if(mostrarPedras){
+                    mostrarPedras.checked = statusVisibilidade.pedras;
+                    mostrarPedras.onchange = () => atualizarVisibilidadeStatus('pedras', mostrarPedras.checked);
+                }
+                if(mostrarDano){
+                    mostrarDano.checked = statusVisibilidade.dano;
+                    mostrarDano.onchange = () => atualizarVisibilidadeStatus('dano', mostrarDano.checked);
+                }
+                if(mostrarPicareta){
+                    mostrarPicareta.checked = statusVisibilidade.picareta;
+                    mostrarPicareta.onchange = () => atualizarVisibilidadeStatus('picareta', mostrarPicareta.checked);
+                }
+                if(mostrarBoostPedra){
+                    mostrarBoostPedra.checked = statusVisibilidade.boostPedra;
+                    mostrarBoostPedra.onchange = () => atualizarVisibilidadeStatus('boostPedra', mostrarBoostPedra.checked);
+                }
+                if(mostrarRenascimento){
+                    mostrarRenascimento.checked = statusVisibilidade.renascimento;
+                    mostrarRenascimento.onchange = () => atualizarVisibilidadeStatus('renascimento', mostrarRenascimento.checked);
+                }
+            }, 100);
         }else{
             telaOn = false;
             telaConfiguracao.style.display = "none";
