@@ -8,6 +8,85 @@
     align-items: center;
 }
 
+/* Avisos de dinheiro insuficiente nos upgrades */
+.avisoSemDinheiro{
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    background: linear-gradient(135deg, rgba(204, 0, 0, 0.9) 0%, rgba(140, 0, 0, 0.9) 100%);
+    border: 2px solid rgba(255, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.6),
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+    animation: avisoPulse 2s ease-in-out infinite;
+}
+
+/* Estilo base para botões de upgrade */
+.botoesUpgrades{
+    background-color: #2a2a2a;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Estilo para botões que podem ser comprados */
+.botoesUpgrades.podeComprar{
+    background: linear-gradient(135deg, #2a7a2a 0%, #1a5a1a 100%) !important;
+    border: 2px solid rgba(0, 255, 0, 0.8) !important;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 0, 0.6),
+        0 0 35px rgba(0, 255, 0, 0.4),
+        inset 0 0 15px rgba(0, 0, 0, 0.3) !important;
+    color: white !important;
+}
+
+.botoesUpgrades.podeComprar:hover{
+    background: linear-gradient(135deg, #3a9a3a 0%, #2a7a2a 100%) !important;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 0, 0.8),
+        0 0 50px rgba(0, 255, 0, 0.6),
+        inset 0 0 15px rgba(0, 0, 0, 0.3) !important;
+    border-color: rgba(0, 255, 0, 1) !important;
+    transform: scale(1.02);
+}
+
+.botoesUpgrades.podeComprar p{
+    color: white !important;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.7),
+        0 0 20px rgba(0, 255, 0, 0.5);
+    font-weight: bold;
+}
+
+.avisoSemDinheiro p{
+    color: #ffcccc;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-shadow: 
+        0 0 8px rgba(255, 204, 204, 0.8),
+        0 0 15px rgba(255, 204, 204, 0.6),
+        0 2px 5px rgba(0, 0, 0, 0.9);
+    letter-spacing: 0.5px;
+}
+
+@keyframes avisoPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 15px rgba(255, 0, 0, 0.6),
+            inset 0 0 10px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        box-shadow: 
+            0 0 25px rgba(255, 0, 0, 0.9),
+            inset 0 0 10px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 100, 100, 1);
+    }
+}
+
 #renacimento{
     display: flex; /* Para ser controlado pelo JS */
     flex-direction: column;

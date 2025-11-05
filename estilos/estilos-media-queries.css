@@ -1,156 +1,533 @@
-@media (max-width: 725px) {
+@media (max-width: 900px) {
 
     body{
         display: block;
-        height: auto; /* Permite scroll em telas pequenas */
-        /* align-items: none;
-        justify-content: none; */
-    }
-
-    #container {
-        flex-direction: column; /* Empilha as seções */
         height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
-    #mineracao, #menusUpgrades {
-        width: 90%; /* Ocupa quase toda a largura */
-        border-radius: 20px;
-        margin-bottom: 20px;
+    /* Header responsivo */
+    header{
+        height: auto;
+        min-height: 15vh;
+        padding: 10px 0;
     }
-    
-    button{
-        /* background-color: red; */
-        font-size: 10px;
+
+    header h1{
+        font-size: 28px;
+        margin: 5px 0;
+    }
+
+    header h2{
+        font-size: 16px;
+    }
+
+    nav{
+        height: auto;
+        min-height: 8vh;
         padding: 5px;
     }
 
-    li{
-        margin: 3px;
-    }
-
-    .quadrados{
-        background-color: #c40909;
-        box-shadow: rgb(255, 85, 85) 0px 0px 20px;
-        width: 40px;
-        height: 40px;
-        border-radius: 4px;
-    }
-
-    #botaoComprarPicareta1{
-        position: absolute;
-        top: 25px;
-        left: 10px;
-    }
-
-    #botaoComprarPicareta2{
-        position: absolute;
-        top: 25px;
-        left: 70px;
-    }
-
-    #botaoComprarPicareta3{
-        position: absolute;
-        top: 25px;
-        left: 130px;
-    }
-
-    #botaoComprarPicareta4{
-        position: absolute;
-        top: 25px;
-        left: 190px;
-    }
-
-    #botaoComprarPicareta5{
-        position: absolute;
-        top: 25px;
-        left: 250px;
-    }
-
-    #botaoComprarPedra1{
-        position: absolute;
-        top: 85px;
-        left: 10px;
-    }
-
-    #botaoComprarPedra2{
-        position: absolute;
-        top: 85px;
-        left: 70px;
-    }
-
-    #botaoComprarPedra3{
-        position: absolute;
-        top: 85px;
-        left: 130px;
-    }
-
-    #botaoComprarPedra4{
-        position: absolute;
-        top: 85px;
-        left: 190px;
-    }
-
-    #botaoComprarPedra5{
-        position: absolute;
-        top: 85px;
-        left: 250px;
-    }
-
-    #botaoComprarFundo1{
-        position: absolute;
-        top: 145px;
-        left: 10px;
-        background-color: #2a2a2a;
-    }
-
-    #botaoComprarFundo2{
-        position: absolute;
-        top: 145px;
-        left: 70px;
-    }
-
-    #botaoComprarFundo3{
-        position: absolute;
-        top: 145px;
-        left: 130px;
-    }
-
-    #botaoComprarFundo4{
-        position: absolute;
-        top: 145px;
-        left: 190px;
-    }
-
-    #botaoComprarFundo5{
-        position: absolute;
-        top: 145px;
-        left: 250px;
-    }
-
-    #telaRenacimento {
-        width: 90%; /* Ocupa mais tela no mobile */
-    }
-
-    #lojaRenacimento #containerCanvas {
+    header ul{
         flex-direction: column;
-        aspect-ratio: unset;
+        gap: 5px;
+    }
+
+    header li{
+        font-size: 14px;
+        margin: 2px;
+        text-align: center;
+    }
+
+    /* Container principal */
+    #container {
+        flex-direction: column;
         height: auto;
-    }
-
-    #lojaRenacimento #canvas {
         width: 100%;
-        height: 200px; /* Altura fixa para o canvas */
+        padding: 10px;
+        box-sizing: border-box;
     }
 
-    #lojaRenacimento #itemSelecionado {
+    /* Seção de mineração */
+    #mineracao {
+        width: 95%;
+        height: auto;
+        min-height: 50vh;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    #vidaPedra{
+        width: 95%;
+        height: 25px;
+        margin: 10px auto;
+    }
+
+    #vidaPerdida p{
+        font-size: 11px;
+    }
+
+    #conjuntoMineracao{
+        width: 95%;
+        height: 40vh;
+        min-height: 250px;
+        margin: 10px auto;
+    }
+
+    #picareta{
+        width: 70%;
+        height: 30vh;
+        min-height: 180px;
+    }
+
+    #pedra{
+        width: 70%;
+        height: 30vh;
+        min-height: 180px;
+    }
+
+    #botaoMinerar{
+        width: 95%;
+        height: 50px;
+        font-size: 18px;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    /* Seção de upgrades */
+    #menusUpgrades {
+        width: 95%;
+        height: auto;
+        min-height: 50vh;
+        border-radius: 20px;
+        margin-bottom: 15px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    #menu ul{
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #menu li{
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    #menu button{
+        font-size: 14px;
+        padding: 12px;
+        min-height: 44px; /* Tamanho mínimo para toque */
+    }
+
+    article{
+        width: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    article h2{
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    article p{
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    .avisoSemDinheiro{
+        padding: 8px;
+        margin: 8px 0;
+    }
+
+    .avisoSemDinheiro p{
+        font-size: 12px;
+    }
+
+    .botoesUpgrades{
+        font-size: 14px;
+        padding: 15px;
+        min-height: 50px;
+    }
+
+    #renacimento{
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    #textoRenacer{
+        font-size: 20px;
+    }
+
+    #imagemRenacimento{
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Botões gerais */
+    button{
+        font-size: 14px;
+        padding: 12px;
+        min-height: 44px; /* Tamanho mínimo recomendado para toque */
+        cursor: pointer;
+    }
+
+    li{
+        margin: 5px;
+    }
+
+    /* Tela de renascimento */
+    #telaRenacimento {
+        width: 95%;
+        max-width: 95vw;
+        height: auto;
+        min-height: 60vh;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    #tituloRenacer{
+        font-size: 28px;
+        margin: 5px 0;
+        padding: 5px;
+    }
+
+    #textoRenacer2{
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    #avisoSemDinheiro{
+        padding: 10px;
+        margin: 8px 0;
+    }
+
+    #textoAvisoSemDinheiro{
+        font-size: 13px;
+    }
+
+    #telaRenacer p{
+        font-size: 12px;
+        margin: 5px 0;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    #precoRenacimento{
+        font-size: 12px;
+        margin: 8px 0;
+        padding: 8px 12px;
+    }
+
+    #botaoSim, #botaoNao{
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+        margin: 5px;
+    }
+
+    #botaoNao{
+        margin-top: 5px;
+    }
+
+    #abrirLoja{
+        width: 50px;
+        height: 50px;
+        top: 5px;
+        right: 5px;
+    }
+
+    #imagemLoja{
+        width: 45px;
+        height: 45px;
+    }
+
+    /* Loja de renascimento */
+    #lojaRenacimento{
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #textoLoja p{
+        font-size: 18px;
+        position: relative;
+        top: auto;
+        left: auto;
+        margin: 10px 0;
+    }
+
+    #pontosRenacimento{
+        font-size: 16px;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    #botaoIrRenacer{
+        position: relative;
+        top: auto;
+        right: auto;
+        width: auto;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 14px;
+    }
+
+    /* Layout responsivo da loja */
+        #headerLoja{
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        #textoLoja p{
+            font-size: 20px;
+            padding: 8px 15px;
+            margin: 5px 0;
+        }
+
+        #pontosRenacimento{
+            font-size: 14px;
+            padding: 10px 15px;
+            margin: 5px 0;
+        }
+
+        #botaoIrRenacer{
+            top: 10px;
+            right: 10px;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+
+        #lojaContainer {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #containerItens {
+            width: 100%;
+        }
+
+    .categoriaItens {
+        padding: 10px;
+    }
+
+    .tituloCategoria {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .gridItens {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        gap: 10px;
+    }
+
+    /* Botões da loja (picaretas, pedras, fundos) */
+    .quadrados{
+        width: 60px;
+        height: 60px;
+        padding: 3px;
+    }
+
+    .quadrados img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    #itemSelecionado {
         position: relative;
         width: 100%;
+        max-width: 100%;
+        min-width: auto;
+        margin-top: 15px;
+        padding: 15px;
+    }
+
+    #tituloItemSelecionado{
+        font-size: 18px;
+        margin: 10px 0;
+    }
+
+    #fotoItemSelecionado{
+        width: 80%;
+        height: 150px;
+        margin: 10px auto;
+    }
+
+    #precoItemSelecionado{
+        font-size: 14px;
         height: auto;
-        margin-top: 10px;
+        min-height: 40px;
+        margin: 10px 0;
+    }
+
+    #descricaoItemSelecionado{
+        font-size: 13px;
+        height: auto;
+        min-height: 60px;
+        margin: 10px 0;
+        padding: 10px;
     }
 
     #botaoComprar {
-        width: 50%; /* Botão de comprar maior no mobile */
+        width: 80%;
+        max-width: 300px;
+        height: 50px;
+        font-size: 16px;
+        margin: 15px auto;
+    }
+
+    /* Tela de configuração */
+    #configuracao{
+        top: 10px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
+    }
+
+    #botaoConfiguracao{
+        width: 45px;
+        height: 45px;
+    }
+
+    #imagemConfiguracao{
+        width: 45px;
+        height: 45px;
+    }
+
+    #telaConfiguracao{
+        padding: 10px;
+    }
+
+    #quadradoConfiguracao{
+        width: 95%;
+        max-width: 500px;
+        height: auto;
+        min-height: 60vh;
+        max-height: 90vh;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    #quadradoConfiguracao h1{
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    #quadradoConfiguracao p{
+        font-size: 14px;
+        margin: 10px 0;
+    }
+
+    #quadradoConfiguracao h2{
+        font-size: 18px;
+        margin: 15px 0;
+    }
+
+    #botaoFecharConfiguracao{
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        left: 10px;
+    }
+
+    #imagemVoltarConfiguracao{
+        width: 40px;
+        height: 40px;
+    }
+
+    #configuracaoAnimacao,
+    #configuracaoSom,
+    #configuracaoReset{
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    #configuracaoAnimacao label,
+    #configuracaoSom label{
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    #configuracaoAnimacao input[type="checkbox"],
+    #configuracaoSom input[type="checkbox"]{
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    #configuracaoReset button{
+        width: 100%;
+        max-width: 250px;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    /* Ajustes para telas muito pequenas */
+    @media (max-width: 600px) {
+        header h1{
+            font-size: 24px;
+        }
+
+        header li{
+            font-size: 12px;
+        }
+
+        #conjuntoMineracao{
+            height: 35vh;
+            min-height: 200px;
+        }
+
+        #picareta, #pedra{
+            height: 25vh;
+            min-height: 150px;
+        }
+
+        .quadrados{
+            width: 50px;
+            height: 50px;
+        }
+
+        .gridItens {
+            grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 8px;
+        }
+
+        /* Notificações no mobile */
+        #notificacoesContainer {
+            top: 10px;
+            right: 10px;
+            left: 10px;
+            max-width: calc(100% - 20px);
+        }
+
+        .notificacao {
+            min-width: auto;
+            max-width: 100%;
+            font-size: 12px;
+            padding: 12px 15px;
+        }
+    }
+
+    /* Notificações responsivas */
+    #notificacoesContainer {
+        top: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+    }
+
+    .notificacao {
+        min-width: 250px;
+        max-width: 90vw;
+        font-size: 13px;
     }
 
 }

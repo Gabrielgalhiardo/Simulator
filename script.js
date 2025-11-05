@@ -28,6 +28,28 @@ somStoneHit.volume = 0.5;
 somStoneBroke.volume = 0.5;
 
 // ==================================================
+// SISTEMA DE NOTIFICAÇÕES
+// ==================================================
+function mostrarNotificacao(mensagem, tipo = 'aviso') {
+    // tipo pode ser: 'sucesso', 'erro', 'aviso'
+    const container = document.getElementById('notificacoesContainer');
+    if (!container) return;
+    
+    const notificacao = document.createElement('div');
+    notificacao.className = `notificacao ${tipo}`;
+    notificacao.textContent = mensagem;
+    
+    container.appendChild(notificacao);
+    
+    // Remove a notificação após a animação (3 segundos)
+    setTimeout(() => {
+        if (notificacao.parentNode) {
+            notificacao.parentNode.removeChild(notificacao);
+        }
+    }, 3000);
+}
+
+// ==================================================
 // NOVAS FUNÇÕES DE SAVE / LOAD
 // ==================================================
 
@@ -210,7 +232,9 @@ function melhoriaDano(){
             dano = dano + 1;
             nivelDano += 1;
             valorUpgradeDano = Math.floor(20 * (1.18 ** (nivelDano - 1)));
-
+    } else {
+        // Mostrar aviso quando não tiver dinheiro suficiente
+        mostrarNotificacao(`Você precisa de ${valorUpgradeDano} pedras para melhorar o dano!`, 'erro');
     }
 
 }
@@ -225,9 +249,10 @@ function melhoriaPicareta(){
         multiplicadorDaPicareta = (multiplicadorDaPicareta * 1.6).toFixed(2);
         valorEvoluirUpgrade = Math.floor(valorEvoluirUpgrade * 1.45);
         valorUpgradeDano = Math.floor(20 * (1.5 ** (nivelDano - 1)));
-
-        
-}
+    } else {
+        // Mostrar aviso quando não tiver dano suficiente
+        mostrarNotificacao(`Você precisa de ${valorEvoluirUpgrade} de dano para evoluir a picareta!`, 'erro');
+    }
 
 }
 
@@ -239,6 +264,9 @@ function melhoriaPedra(){
         valorPedraUpgrade = Math.floor(valorPedraUpgrade * 1.70);
 
         bonusPedra = Math.floor(bonusPedra * 2);
+    } else {
+        // Mostrar aviso quando não tiver dinheiro suficiente
+        mostrarNotificacao(`Você precisa de ${valorPedraUpgrade} pedras para melhorar a pedra!`, 'erro');
     }
 }
 
@@ -261,6 +289,9 @@ function renacer(){
         pontosDeRenacimento += 1;
         numeroDeRenacimentos += 1;
         telaRenacer(); // Isso fechará a tela após renascer
+    } else {
+        // Mostrar aviso quando não tiver dinheiro suficiente
+        mostrarNotificacao(`Você precisa de ${custoRenacimento} pedras para renascer!`, 'erro');
     }
 }
 
@@ -582,7 +613,7 @@ function atualizarBotaoCompra(indice, tipo){
 // Função principal de compra
 function comprarItem(){
     if(tipoItem === ""){
-        alert("Nenhum item selecionado!");
+        mostrarNotificacao("Nenhum item selecionado!", 'aviso');
         return;
     }
     
@@ -615,10 +646,10 @@ function comprarItem(){
             picaretas[indice] = true;
             pontosDeRenacimento -= custo;
             equiparPicareta(indice + 1);
-            alert(`Picareta ${indice + 2} comprada com sucesso!`);
+            mostrarNotificacao(`Picareta ${indice + 2} comprada com sucesso!`, 'sucesso');
             saveGame();
         } else {
-            alert(`Você precisa de ${custo} ponto(s) de renascimento para comprar essa picareta!`);
+            mostrarNotificacao(`Você precisa de ${custo} ponto(s) de renascimento para comprar essa picareta!`, 'erro');
         }
         
     } else if(tipoItem === "pedra"){
@@ -646,10 +677,10 @@ function comprarItem(){
             pedras[indice] = true;
             pontosDeRenacimento -= custo;
             equiparPedra(indice + 1);
-            alert(`Pedra ${indice + 2} comprada com sucesso!`);
+            mostrarNotificacao(`Pedra ${indice + 2} comprada com sucesso!`, 'sucesso');
             saveGame();
         } else {
-            alert(`Você precisa de ${custo} ponto(s) de renascimento para comprar essa pedra!`);
+            mostrarNotificacao(`Você precisa de ${custo} ponto(s) de renascimento para comprar essa pedra!`, 'erro');
         }
         
     } else if(tipoItem === "fundo"){
@@ -677,10 +708,10 @@ function comprarItem(){
             fundos[indice] = true;
             pontosDeRenacimento -= custo;
             equiparFundo(indice + 1);
-            alert(`Fundo ${indice + 2} comprado com sucesso!`);
+            mostrarNotificacao(`Fundo ${indice + 2} comprado com sucesso!`, 'sucesso');
             saveGame();
         } else {
-            alert(`Você precisa de ${custo} ponto(s) de renascimento para comprar esse fundo!`);
+            mostrarNotificacao(`Você precisa de ${custo} ponto(s) de renascimento para comprar esse fundo!`, 'erro');
         }
     }
     
@@ -817,6 +848,59 @@ function atualizarStatus(){
 
     let statusPontosRenacimento = document.getElementById("pontosRenacimento");
     statusPontosRenacimento.innerText = `Pontos de Renascimento: ${pontosDeRenacimento}`;
+
+    // Atualizar aviso de dinheiro insuficiente na tela de renascimento
+    let avisoSemDinheiro = document.getElementById("avisoSemDinheiro");
+    let botaoSim = document.getElementById("botaoSim");
+    if(avisoSemDinheiro && botaoSim){
+        if(pedregulho < custoRenacimento){
+            avisoSemDinheiro.style.display = "block";
+            botaoSim.classList.remove("podeComprar");
+        } else {
+            avisoSemDinheiro.style.display = "none";
+            botaoSim.classList.add("podeComprar");
+        }
+    }
+
+    // Atualizar avisos de dinheiro insuficiente nos upgrades e cor dos botões
+    // Aviso para upgrade de dano
+    let avisoSemDinheiroDano = document.getElementById("avisoSemDinheiroDano");
+    let botaoDano = document.querySelector("#danoUpgrade .botoesUpgrades");
+    if(botaoDano){
+        if(pedregulho >= valorUpgradeDano){
+            if(avisoSemDinheiroDano) avisoSemDinheiroDano.style.display = "none";
+            botaoDano.classList.add("podeComprar");
+        } else {
+            if(avisoSemDinheiroDano) avisoSemDinheiroDano.style.display = "block";
+            botaoDano.classList.remove("podeComprar");
+        }
+    }
+
+    // Aviso para evolução de picareta
+    let avisoSemDinheiroPicareta = document.getElementById("avisoSemDinheiroPicareta");
+    let botaoPicareta = document.querySelector("#evoluirPicaretaUpgrade .botoesUpgrades");
+    if(botaoPicareta){
+        if(dano >= valorEvoluirUpgrade){
+            if(avisoSemDinheiroPicareta) avisoSemDinheiroPicareta.style.display = "none";
+            botaoPicareta.classList.add("podeComprar");
+        } else {
+            if(avisoSemDinheiroPicareta) avisoSemDinheiroPicareta.style.display = "block";
+            botaoPicareta.classList.remove("podeComprar");
+        }
+    }
+
+    // Aviso para upgrade de pedra
+    let avisoSemDinheiroPedra = document.getElementById("avisoSemDinheiroPedra");
+    let botaoPedra = document.querySelector("#pedraUpgrade .botoesUpgrades");
+    if(botaoPedra){
+        if(pedregulho >= valorPedraUpgrade){
+            if(avisoSemDinheiroPedra) avisoSemDinheiroPedra.style.display = "none";
+            botaoPedra.classList.add("podeComprar");
+        } else {
+            if(avisoSemDinheiroPedra) avisoSemDinheiroPedra.style.display = "block";
+            botaoPedra.classList.remove("podeComprar");
+        }
+    }
 
     let animacao = document.getElementById("animacaoLigada");
     if(animacao){

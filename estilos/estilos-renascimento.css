@@ -6,12 +6,44 @@
     align-items: center;
     justify-content: center;
     width: 70%;
-    height: 70vh;
-    background-color: #7e0101c9;
+    max-width: 1200px;
+    height: auto;
+    max-height: 95vh;
+    min-height: 400px;
+    background: linear-gradient(135deg, rgba(126, 1, 1, 0.95) 0%, rgba(60, 0, 0, 0.95) 50%, rgba(40, 0, 0, 0.95) 100%);
+    border: 3px solid rgba(255, 0, 0, 0.5);
     border-radius: 30px;
+    box-shadow: 
+        0 0 30px rgba(255, 0, 0, 0.6),
+        0 0 60px rgba(255, 0, 0, 0.4),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
     opacity: 0; /* Inicia transparente para animação */
     transform: scale(0.9); /* Inicia menor para animação */
     z-index: 200;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#telaRenacimento::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+    animation: rotateGlow 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateGlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Novas classes para controlar animação */
@@ -25,45 +57,234 @@
 
 #tituloRenacer{
     color: #ff0000;
-    font-size: 50px;
+    font-size: 36px;
     font-weight: bold;
-    text-shadow: 2px 20px 10px black;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 0, 0.6),
+        0 0 30px rgba(255, 0, 0, 0.4),
+        2px 20px 10px rgba(0, 0, 0, 0.9);
     text-align: center;
-    animation: mudarCor 4s infinite linear;
+    animation: mudarCor 4s infinite linear, glowPulse 2s ease-in-out infinite alternate;
     margin: 0;
-    padding: 0;
+    padding: 10px 5px;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow: 
+            0 0 10px rgba(255, 0, 0, 0.8),
+            0 0 20px rgba(255, 0, 0, 0.6),
+            0 0 30px rgba(255, 0, 0, 0.4),
+            2px 20px 10px rgba(0, 0, 0, 0.9);
+    }
+    to {
+        text-shadow: 
+            0 0 20px rgba(255, 0, 0, 1),
+            0 0 30px rgba(255, 0, 0, 0.8),
+            0 0 40px rgba(255, 0, 0, 0.6),
+            2px 20px 10px rgba(0, 0, 0, 0.9);
+    }
 }
 
 #textoRenacer2{
-    color: #ff0000;
-    filter: blur(1px);
-    font-size: 35px;
+    color: #ff3333;
+    filter: blur(0.5px);
+    font-size: 24px;
     font-weight: bold;
-    text-shadow: 2px 20px 10px black;
+    text-shadow: 
+        0 0 15px rgba(255, 51, 51, 0.8),
+        0 0 25px rgba(255, 51, 51, 0.6),
+        2px 20px 10px rgba(0, 0, 0, 0.9);
     text-align: center;
+    margin: 10px 0;
+    animation: textShimmer 3s ease-in-out infinite;
+    line-height: 1.3;
+}
+
+#avisoSemDinheiro{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: linear-gradient(135deg, rgba(204, 0, 0, 0.9) 0%, rgba(140, 0, 0, 0.9) 100%);
+    border: 2px solid rgba(255, 0, 0, 0.8);
+    border-radius: 12px;
+    box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.6),
+        inset 0 0 15px rgba(0, 0, 0, 0.5);
+    animation: avisoPulse 2s ease-in-out infinite;
+}
+
+#textoAvisoSemDinheiro{
+    color: #ffcccc;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-shadow: 
+        0 0 10px rgba(255, 204, 204, 0.8),
+        0 0 20px rgba(255, 204, 204, 0.6),
+        0 2px 5px rgba(0, 0, 0, 0.9);
+    letter-spacing: 0.5px;
+}
+
+@keyframes avisoPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 0, 0, 0.6),
+            inset 0 0 15px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 0, 0, 0.9),
+            inset 0 0 15px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 100, 100, 1);
+    }
+}
+
+@keyframes textShimmer {
+    0%, 100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 #botaoSim{
-    background-color: #140000;
+    background: linear-gradient(135deg, #1a0000 0%, #0d0000 100%);
     display: flex;
-    font-size: 20px;
-    color: red;
+    font-size: 18px;
+    color: #ff3333;
     align-self: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    padding: 0;
+    border: 2px solid rgba(255, 0, 0, 0.6);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.5),
+        0 0 30px rgba(255, 0, 0, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+#botaoSim::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.3) 0%, transparent 70%);
+    animation: rotateGlow 3s linear infinite;
+    border-radius: 50%;
+}
+
+#botaoSim:hover {
+    transform: scale(1.1);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 25px rgba(255, 0, 0, 0.8),
+        0 0 40px rgba(255, 0, 0, 0.5),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 0, 0, 0.9);
+}
+
+#botaoSim:active {
+    transform: scale(0.95);
+    border-radius: 50%;
+}
+
+/* Estilo quando pode renascer */
+#botaoSim.podeComprar{
+    background: linear-gradient(135deg, #1a5a1a 0%, #0d3d0d 100%);
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 0, 0.5),
+        0 0 30px rgba(0, 255, 0, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#botaoSim.podeComprar:hover {
+    border-color: rgba(0, 255, 0, 0.9);
+    box-shadow: 
+        0 0 25px rgba(0, 255, 0, 0.8),
+        0 0 40px rgba(0, 255, 0, 0.5),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#botaoSim.podeComprar::before {
+    background: radial-gradient(circle, rgba(0, 255, 0, 0.3) 0%, transparent 70%);
 }
 
 #botaoNao{
-    background-color: #ff0000;
-    font-size: 20px;
+    background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+    font-size: 18px;
     color: #140000;
     display: flex;
     align-self: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    margin-top: 50px;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    padding: 0;
+    border: 2px solid rgba(140, 0, 0, 0.8);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.6),
+        0 0 30px rgba(255, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+#botaoNao::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    animation: rotateGlow 2s linear infinite reverse;
+    border-radius: 50%;
+}
+
+#botaoNao:hover {
+    transform: scale(1.1);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 25px rgba(255, 0, 0, 0.9),
+        0 0 40px rgba(255, 0, 0, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #ff5555 0%, #ff0000 100%);
+}
+
+#botaoNao:active {
+    transform: scale(0.95);
+    border-radius: 50%;
 }
 
 #fundoRenacimento{
@@ -90,11 +311,53 @@
 }
 
 #telaRenacimento p{
-    color: #ff0000;
+    color: #ff6666;
     font-weight: bold;
     text-shadow:
-        0 0 15px #ff0000,
-        0 10px 10px #000000;
+        0 0 10px rgba(255, 0, 0, 0.6),
+        0 0 20px rgba(255, 0, 0, 0.4),
+        0 5px 10px rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 8px 0;
+    padding: 0 15px;
+}
+
+#precoRenacimento{
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffaa00;
+    text-shadow: 
+        0 0 10px rgba(255, 170, 0, 0.9),
+        0 0 20px rgba(255, 170, 0, 0.7),
+        0 0 30px rgba(255, 170, 0, 0.5),
+        2px 5px 10px rgba(0, 0, 0, 0.9);
+    margin: 10px 0;
+    padding: 10px 15px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(40, 0, 0, 0.6) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 170, 0, 0.5);
+    box-shadow: 
+        0 0 20px rgba(255, 170, 0, 0.4),
+        inset 0 0 15px rgba(0, 0, 0, 0.6);
+    animation: pricePulse 2s ease-in-out infinite;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+@keyframes pricePulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 170, 0, 0.4),
+            inset 0 0 15px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255, 170, 0, 0.5);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(255, 170, 0, 0.7),
+            inset 0 0 15px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255, 170, 0, 0.8);
+    }
 }
 
 #telaRenacer{
@@ -102,32 +365,50 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: #aa00ff; */
     width: 100%;
-    height: 80%;
+    height: auto;
+    min-height: fit-content;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#telaRenacer > button {
+    margin: 5px;
 }
 
 #abrirLoja{
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
+    top: 15px;
+    right: 15px;
+    background: rgba(87, 0, 0, 0.7);
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
     cursor: pointer;
-    padding: 0;
+    padding: 5px;
     width: 70px;
     height: 70px;
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.4),
+        inset 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
 #abrirLoja:hover{
-    transition: 500ms;
-    background-color: #570000;
-    cursor: pointer;
+    background: rgba(181, 0, 0, 0.8);
+    border-color: rgba(255, 0, 0, 0.8);
+    box-shadow: 
+        0 0 25px rgba(255, 0, 0, 0.6),
+        inset 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
 }
 
 #abrirLoja:active{
-    transform: scale(0.9);
-    background-color: #b50000;
+    transform: scale(0.95);
+    background: rgba(255, 0, 0, 0.9);
 }
 
 #imagemLoja{
@@ -135,189 +416,381 @@
     height: 60px;
 }
 
-#textoLoja p{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 20px;
-    text-shadow: 2px 20px 10px black;
-    text-align: center;
-    animation: mudarCor 5s infinite linear;
-    margin: 10px;
+/* Header da loja */
+#headerLoja{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(40, 0, 0, 0.4) 100%);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+#textoLoja{
+    margin: 0;
     padding: 0;
+    width: 100%;
+}
+
+#textoLoja p{
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 0, 0.6),
+        2px 2px 10px rgba(0, 0, 0, 0.9);
+    text-align: center;
+    animation: mudarCor 5s infinite linear, glowPulse 2s ease-in-out infinite alternate;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(40, 0, 0, 0.5) 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    letter-spacing: 2px;
 }
 
 #lojaRenacimento{
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
-    height: 70%;
-    /* background-color: #00ff00; */
+    height: auto;
+    max-height: 90vh;
+    min-height: 500px;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, rgba(40, 0, 0, 0.8) 0%, rgba(60, 0, 0, 0.8) 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 15px;
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 0, 0, 0.6) rgba(0, 0, 0, 0.3);
+}
+
+/* Estilização da barra de scroll - Webkit (Chrome, Safari, Edge) */
+#lojaRenacimento::-webkit-scrollbar {
+    width: 12px;
+}
+
+#lojaRenacimento::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+#lojaRenacimento::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.6) 0%, rgba(140, 0, 0, 0.6) 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+#lojaRenacimento::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.8) 0%, rgba(180, 0, 0, 0.8) 100%);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#pontosRenacimento{
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffaa00;
+    text-shadow: 
+        0 0 10px rgba(255, 170, 0, 0.9),
+        0 0 20px rgba(255, 170, 0, 0.7),
+        0 2px 5px rgba(0, 0, 0, 0.8);
+    margin: 10px 0 0 0;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(40, 30, 0, 0.6) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 170, 0, 0.5);
+    box-shadow: 
+        0 0 15px rgba(255, 170, 0, 0.4),
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #botaoIrRenacer{
-    background-color: #681310;
-    box-shadow: rgb(255, 85, 85) 0px 0px 20px;
+    background: linear-gradient(135deg, #681310 0%, #8a1a1a 100%);
+    box-shadow: 
+        rgb(255, 85, 85) 0px 0px 20px,
+        inset 0 0 10px rgba(0, 0, 0, 0.3);
     position: absolute;
-    top: 25px;
-    right: 10px;
-    color: rgb(216, 0, 0);
+    top: 15px;
+    right: 15px;
+    color: rgb(255, 100, 100);
     font-weight: bold;
-    top: 10px;
-    right: 10px;
     width: max-content;
     height: max-content;
+    padding: 10px 20px;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 10;
 }
 
 #botaoIrRenacer:hover{
-    transition: 500ms;
-    scale: 1.08;
-    background-color: #ff0000;
+    transform: scale(1.08);
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    box-shadow: 
+        rgb(255, 85, 85) 0px 0px 30px,
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 0, 0, 0.8);
+    color: white;
 }
 
-#containerCanvas{
-    position: relative;
+#botaoIrRenacer:active{
+    transform: scale(0.95);
+}
+
+/* Novo layout responsivo sem canvas */
+#lojaContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
     width: 100%;
-    max-width: 800px;
-    height: 100%;
-    aspect-ratio: 4 / 3; 
-    margin: auto;
-    border: 1px solid #000;
-    /* background-color: #00ff00; */ /* Removido para ver o canvas */
+    max-width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    min-height: 400px;
 }
 
-#canvas{
-    background-color: rgb(143, 1, 1);
-    width: 70%;
-    height: 100%;
-    display: block;
+#containerItens {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    min-width: 0;
+}
+
+.categoriaItens {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 0, 0, 0.2);
+}
+
+.tituloCategoria {
+    color: #ff6666;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 
+        0 0 10px rgba(255, 102, 102, 0.8),
+        0 0 20px rgba(255, 102, 102, 0.6),
+        2px 5px 10px rgba(0, 0, 0, 0.9);
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(40, 0, 0, 0.4) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+}
+
+.gridItens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 18px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Aumentar tamanhos em telas grandes */
+@media (min-width: 1200px) {
+    #telaRenacimento {
+        max-width: 1400px;
+        padding: 30px;
+    }
+
+    #lojaRenacimento {
+        padding: 30px;
+        min-height: 600px;
+    }
+
+    #lojaContainer {
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .gridItens {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 20px;
+    }
+
+    .quadrados {
+        width: 90px;
+        height: 90px;
+        padding: 7px;
+    }
+
+    .categoriaItens {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .tituloCategoria {
+        font-size: 22px;
+        padding: 12px;
+    }
+
+    #itemSelecionado {
+        max-width: 450px;
+        padding: 30px;
+    }
+
+    #headerLoja {
+        padding: 20px;
+    }
+
+    #textoLoja p {
+        font-size: 28px;
+        padding: 15px 30px;
+    }
+
+    #pontosRenacimento {
+        font-size: 20px;
+        padding: 15px 25px;
+    }
+}
+
+@media (min-width: 1600px) {
+    #telaRenacimento {
+        max-width: 1600px;
+        padding: 40px;
+    }
+
+    .gridItens {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 25px;
+    }
+
+    .quadrados {
+        width: 100px;
+        height: 100px;
+        padding: 8px;
+    }
+
+    .tituloCategoria {
+        font-size: 24px;
+    }
+
+    #itemSelecionado {
+        max-width: 500px;
+        padding: 35px;
+    }
 }
 
 .quadrados{
-    background-color: #c40909;
-    box-shadow: rgb(255, 85, 85) 0px 0px 20px;
-    width: 70px;
-    height: 70px;
-    border-radius: 4px;
-    padding: 5px; /* Adiciona espaço para a imagem */
+    background: linear-gradient(135deg, #c40909 0%, #8b0606 100%);
+    box-shadow: 
+        rgb(255, 85, 85) 0px 0px 20px,
+        inset 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 100, 100, 0.5);
+    padding: 6px; /* Adiciona espaço para a imagem */
     box-sizing: border-box; /* Garante que padding não aumente o tamanho */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quadrados::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    animation: rotateGlow 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.quadrados:hover::before {
+    opacity: 1;
 }
 
 .quadrados:hover{
-    transition: 500ms;
-    scale: 1.08;
-    background-color: #ff0000;
+    transform: scale(1.1) rotate(2deg);
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    box-shadow: 
+        rgb(255, 85, 85) 0px 0px 30px,
+        rgb(255, 150, 150) 0px 0px 15px,
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 150, 150, 0.8);
 }
 
-#botaoComprarPicareta1{
-    position: absolute;
-    top: 25px;
-    left: 10px;
+.quadrados:active{
+    transform: scale(0.95);
 }
 
-#botaoComprarPicareta2{
-    position: absolute;
-    top: 25px;
-    left: 100px;
-}
-
-#botaoComprarPicareta3{
-    position: absolute;
-    top: 25px;
-    left: 190px;
-}
-
-#botaoComprarPicareta4{
-    position: absolute;
-    top: 25px;
-    left: 280px;
-}
-
-#botaoComprarPicareta5{
-    position: absolute;
-    top: 25px;
-    left: 370px;
-}
-
-#botaoComprarPedra1{
-    position: absolute;
-    top: 125px;
-    left: 10px;
-}
-
-#botaoComprarPedra2{
-    position: absolute;
-    top: 125px;
-    left: 100px;
-}
-
-#botaoComprarPedra3{
-    position: absolute;
-    top: 125px;
-    left: 190px;
-}
-
-#botaoComprarPedra4{
-    position: absolute;
-    top: 125px;
-    left: 280px;
-}
-
-#botaoComprarPedra5{
-    position: absolute;
-    top: 125px;
-    left: 370px;
-}
-
-#botaoComprarFundo1{
-    position: absolute;
-    top: 225px;
-    left: 10px;
-    background-color: #2a2a2a;
-}
-
-#botaoComprarFundo2{
-    position: absolute;
-    top: 225px;
-    left: 100px;
-    background-color: darkblue;
-}
-
-#botaoComprarFundo3{
-    position: absolute;
-    top: 225px;
-    left: 190px;
-    background-color: brown;
-}
-
-#botaoComprarFundo4{
-    position: absolute;
-    top: 225px;
-    left: 280px;
-    background-color: cornflowerblue;
-}
-
-#botaoComprarFundo5{
-    position: absolute;
-    top: 225px;
-    left: 370px;
-    background-color: moccasin;
-}
+/* Removidos estilos de posicionamento absoluto - agora usando grid responsivo */
 
 #itemSelecionado{
-    background-color: rgb(59, 55, 58);
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30%;
-    height: 100%;
+    background: linear-gradient(135deg, rgba(59, 55, 58, 0.95) 0%, rgba(40, 35, 40, 0.95) 100%);
+    position: relative;
+    width: 100%;
+    min-width: 280px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-self: center;
+    padding: 25px;
+    box-sizing: border-box;
+    border: 3px solid rgba(255, 0, 0, 0.5);
+    border-radius: 15px;
+    box-shadow: 
+        0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#tituloItemSelecionado{
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6666;
+    text-shadow: 
+        0 0 10px rgba(255, 102, 102, 0.8),
+        0 0 20px rgba(255, 102, 102, 0.6),
+        0 0 30px rgba(255, 102, 102, 0.4),
+        2px 5px 10px rgba(0, 0, 0, 0.9);
+    margin: 10px 0;
+    text-align: center;
     padding: 10px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(40, 0, 0, 0.4) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+    letter-spacing: 1px;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -327,54 +800,101 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #3e3e32; */
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 100, 100, 0.3);
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px 0;
 }
 
 #itemSelecionado p{
     color: white;
-    font-size: 10px;
-    text-shadow: 1px 10px 5px rgb(172, 172, 172);
-    margin: 0;
+    font-size: 12px;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.3),
+        0 2px 5px rgba(0, 0, 0, 0.8);
+    margin: 5px 0;
     padding: 0;
+    line-height: 1.4;
 }
 
 #precoItemSelecionado{
-    /* background-color: #ff0000; */
     width: 100%;
-    height: 10vh;
+    height: auto;
+    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0;
-    font-size: 12px; /* Aumentado */
-    text-align: center; /* Adicionado */
-}
-
-#descricaoItemSelecionado{
-    /* background-color: #00ff04; */
-    width: 100%;
-    height: 12vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 10px; /* Ajustado */
-    margin: 10px;
-    font-size: 12px; /* Aumentado */
-    text-align: center; /* Adicionado */
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffaa00;
+    text-shadow: 
+        0 0 10px rgba(255, 170, 0, 0.8),
+        0 0 20px rgba(255, 170, 0, 0.6),
+        0 2px 5px rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(40, 30, 0, 0.4) 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 170, 0, 0.3);
     box-sizing: border-box;
 }
 
+#descricaoItemSelecionado{
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e0e0e0;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 1.5;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 #botaoComprar{
-    background-color: #ff0000;
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
     width: 12vw;
+    min-width: 120px;
     height: 5vh;
+    min-height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 15px;
-    padding: 5px;
+    font-weight: bold;
+    padding: 10px 20px;
     color: white;
+    border: 2px solid rgba(255, 100, 100, 0.6);
+    border-radius: 10px;
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#botaoComprar:hover{
+    background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
+    box-shadow: 
+        0 0 25px rgba(255, 0, 0, 0.7),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    border-color: rgba(255, 150, 150, 0.8);
+}
+
+#botaoComprar:active{
+    transform: scale(0.95);
 }
 
 /* Animações do renascimento */
