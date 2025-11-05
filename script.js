@@ -110,7 +110,14 @@ function loadGame() {
         picaretas = saveObject.picaretas ?? [false, false, false, false];
         pedraEquipada = saveObject.pedraEquipada ?? 0;
         fundoEquipado = saveObject.fundoEquipado ?? 0;
-        pedras = saveObject.pedras ?? [false, false, false, false];
+        // Garantir que apenas a primeira pedra (padrão) venha desbloqueada
+        // Se não houver save, inicializar todas como false
+        if(saveObject.pedras){
+            pedras = saveObject.pedras;
+        } else {
+            // Primeiro jogo: todas as pedras bloqueadas (exceto a padrão que sempre está disponível)
+            pedras = [false, false, false, false];
+        }
         fundos = saveObject.fundos ?? [false, false, false, false];
         
         // Aplicar itens equipados ao carregar (0 = padrão, também precisa ser aplicado)
@@ -284,10 +291,33 @@ function renacer(){
         valorPedraUpgrade = 300;
 
         nivelDano = 1;
-        multiplicadorDaPicareta = 1;
+        
+        // Salvar qual picareta estava equipada antes do renascimento
+        let picaretaEquipadaAntes = picaretaEquipada;
+        
+        // Resetar pedras - apenas a primeira (padrão) fica disponível
+        pedras = [false, false, false, false];
+        pedraEquipada = 0; // Equipar pedra padrão
         
         pontosDeRenacimento += 1;
         numeroDeRenacimentos += 1;
+        
+        // Reequipar a picareta que estava equipada antes do renascimento
+        // As picaretas compradas permanecem desbloqueadas após renascimento
+        setTimeout(() => {
+            // Se a picareta estava desbloqueada antes, reequipá-la
+            if(picaretaEquipadaAntes === 0 || (picaretaEquipadaAntes > 0 && picaretas[picaretaEquipadaAntes - 1])){
+                equiparPicareta(picaretaEquipadaAntes);
+            } else {
+                // Se não estava desbloqueada, equipar a padrão
+                equiparPicareta(0);
+            }
+            
+            // Equipar a pedra padrão após renascer
+            equiparPedra(0);
+        }, 100);
+        
+        saveGame(); // Salvar o estado após resetar pedras
         telaRenacer(); // Isso fechará a tela após renascer
     } else {
         // Mostrar aviso quando não tiver dinheiro suficiente

@@ -757,6 +757,8 @@
     background: linear-gradient(135deg, rgba(59, 55, 58, 0.95) 0%, rgba(40, 35, 40, 0.95) 100%);
     position: relative;
     width: 100%;
+    height: max-content;
+    min-height: max-content;
     min-width: 280px;
     max-width: 400px;
     display: flex;
@@ -772,6 +774,7 @@
     height: fit-content;
     max-height: 100%;
     overflow-y: auto;
+
 }
 
 #tituloItemSelecionado{
